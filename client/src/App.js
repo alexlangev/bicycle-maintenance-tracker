@@ -1,7 +1,21 @@
+import React from 'react';
+import styled from 'styled-components';
+
+import LogInForm from './components/logIn/LogInForm';
+
 function App() {
   return (
-<h1>Test succesful!</h1>
+    <PageWrapper>
+      <LogInForm>
+        Test succesful!
+      </LogInForm>
+    </PageWrapper>
   );
 }
+
+const PageWrapper = styled.div`
+  height: 100vh;
+  width: 100%;
+`
 
 export default App;
