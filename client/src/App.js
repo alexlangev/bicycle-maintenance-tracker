@@ -6,9 +6,7 @@ import LogInForm from './components/logIn/LogInForm';
 function App() {
   return (
     <PageWrapper>
-      <LogInForm>
-        Test succesful!
-      </LogInForm>
+      <LogInForm />
     </PageWrapper>
   );
 }
