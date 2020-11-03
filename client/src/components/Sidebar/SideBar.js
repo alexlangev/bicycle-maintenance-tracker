@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { VscTriangleLeft, VscTriangleRight } from "react-icons/vsc";
 import UnstyledButton from '../UnstyledButton';
+import ViewToggle from './ViewToggle';
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -16,6 +17,7 @@ const Sidebar = () => {
       <SidebarMenu 
       style={isCollapsed?{display: 'none'}:{display: 'flex'}}
       >
+        <ViewToggle />
       </SidebarMenu>
       <CollapseButton onClick={handleCollapseClick}>
         {isCollapsed?<VscTriangleRight/>:<VscTriangleLeft/>}
