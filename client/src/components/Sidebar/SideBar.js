@@ -28,19 +28,19 @@ const SidebarWrapper = styled.div`
   display: flex;
   flex-direction: row;
   width: 275pt;
-  height: 100vh;
+  height: 100%;
 `
 
 const SidebarMenu = styled.div`
   width: 263pt;
-  height: 100vh;
+  height: 100%;
   background-color: lightsalmon;
 `
 
 const CollapseButton = styled(UnstyledButton)`
   background-color: lightpink;
   width: 12pt;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
