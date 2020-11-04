@@ -6,6 +6,7 @@ import UnstyledButton from '../UnstyledButton';
 import ViewToggle from './ViewToggle';
 import DropdownMenuNav from '../DropdownMenu/DropdownMenuNav';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
+import SelectedBicycle from '../Sidebar/SelectedBicycle';
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -22,6 +23,10 @@ const Sidebar = () => {
         <DropdownMenuNav>
           <DropdownMenu />
         </DropdownMenuNav>
+
+        <SelectedBicycle>
+          <p>Bicycle Choice here</p>
+        </SelectedBicycle>
         <ViewToggle />
       </SidebarMenu>
       <CollapseButton onClick={handleCollapseClick}>
