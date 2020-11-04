@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import { VscTriangleLeft, VscTriangleRight } from "react-icons/vsc";
 import UnstyledButton from '../UnstyledButton';
 import ViewToggle from './ViewToggle';
+import DropdownMenuNav from '../DropdownMenu/DropdownMenuNav';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
-import BicycleChoice from '../DropdownMenu/BicycleChoice';
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -17,10 +17,11 @@ const Sidebar = () => {
   return(
     <SidebarWrapper>
       <SidebarMenu 
-      style={isCollapsed?{display: 'none'}:{display: 'flex'}}
+        style={isCollapsed?{display: 'none'}:{display: 'flex'}}
       >
-        <DropdownMenu />
-        <BicycleChoice />
+        <DropdownMenuNav>
+          <DropdownMenu />
+        </DropdownMenuNav>
         <ViewToggle />
       </SidebarMenu>
       <CollapseButton onClick={handleCollapseClick}>
