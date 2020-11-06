@@ -7,16 +7,31 @@ import TopBar from './components/TopBar/TopBar';
 import Sidebar from './components/Sidebar/SideBar';
 
 function App() {
-  return (
-    <PageWrapper>
-      <GlobalStyle />
-      <TopBar />
-      <ContentWrapper>
-        <Sidebar />
-      </ContentWrapper>
-      {/* <LogInForm /> */}
-    </PageWrapper>
-  );
+  //State relating to loading
+  const [loadingStatus, setLoadingStatus] = React.useState('idle');
+  //State relating to having client info or not
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+
+  //useEffect fetch user info?
+
+  if (isLoggedIn === false && loadingStatus === 'loading'){
+    return (
+      <PageWrapper>
+        Loading...
+      </PageWrapper>
+    )
+  } else if (isLoggedIn === true && loadingStatus === 'false'){
+    return (
+      <PageWrapper>
+        <GlobalStyle />
+        <TopBar />
+        <ContentWrapper>
+          <Sidebar />
+        </ContentWrapper>
+        {/* <LogInForm /> */}
+      </PageWrapper>
+    )
+  }
 }
 
 const PageWrapper = styled.div`

@@ -1,13 +1,15 @@
 'use strict';
-
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const fetch = require('isomorphic-fetch');
 
 const PORT = 5150;
 
 //handlers
-const handleTest = require('./handlers/test');
+const handleTest = require('./handlers/handleTest');
+const handleGetActivities = require('./handlers/handleGetActivities');
 
 express()
   .use(morgan('tiny'))
@@ -16,5 +18,5 @@ express()
 
   // Endpoints
   .get('/test', handleTest)
-  .get('/bacon', (req, res) => res.status(200).json('I love bacon!!! 🥓'))
+  .get('/activities', handleGetActivities)
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));
