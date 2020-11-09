@@ -18,12 +18,11 @@ const Sidebar = () => {
   return(
     <SidebarWrapper>
       <SidebarMenu 
-        style={isCollapsed?{display: 'none'}:{display: 'flex'}}
+        style={isCollapsed?{display: 'none', width: '0%'}:{display: 'flex', width: '275pt'}}
       >
         <DropdownMenuNav>
           <DropdownMenu />
         </DropdownMenuNav>
-
         <SelectedBicycle>
           <p>Bicycle Choice here</p>
         </SelectedBicycle>
@@ -39,7 +38,7 @@ const Sidebar = () => {
 const SidebarWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  width: 275pt;
+  /* width property is inline for conditionnal purpose*/
   height: 100%;
 `
 

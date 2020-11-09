@@ -5,17 +5,23 @@ import UnstyledButton from '../UnstyledButton';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { FaBicycle } from 'react-icons/fa'
 
-const ViewToggle = () => {
+import { ViewToggleContext } from '../../Context/ViewToggleContext';
+
+const ViewToggle = (props) => {
+
+  const {viewToggle, setViewToggle} = React.useContext(ViewToggleContext);
+  console.log(viewToggle);
+  
   return (
     <ViewToggleWrapper>
         <OptionWrapper>
-          <Button>
+          <Button onClick={() => setViewToggle('list')}>
             <AiOutlineUnorderedList size={32}/>
           </Button>
         </OptionWrapper>
 
         <OptionWrapper>
-          <Button>
+          <Button onClick={() => setViewToggle('image')}>
             <FaBicycle size={32}/>
           </Button>
         </OptionWrapper>

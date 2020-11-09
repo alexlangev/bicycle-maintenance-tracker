@@ -5,12 +5,15 @@ import styled from 'styled-components';
 import GlobalStyle from './GlobalStyle';
 import TopBar from './components/TopBar/TopBar';
 import Sidebar from './components/Sidebar/SideBar';
+import BikeInfo from './components/BikeInfo/index';
+
+import { ViewToggleProvider } from './Context/ViewToggleContext';
 
 function App() {
   //State relating to loading
   const [loadingStatus, setLoadingStatus] = React.useState('idle');
   //State relating to having client info or not
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(true);
 
   //useEffect fetch user info?
 
@@ -20,14 +23,18 @@ function App() {
         Loading...
       </PageWrapper>
     )
-  } else if (isLoggedIn === true && loadingStatus === 'false'){
+  } else if (isLoggedIn === true && loadingStatus === 'idle'){
     return (
       <PageWrapper>
         <GlobalStyle />
         <TopBar />
-        <ContentWrapper>
-          <Sidebar />
-        </ContentWrapper>
+          <ViewToggleProvider>
+            <ContentWrapper>
+              <Sidebar />
+              <BikeInfo />
+            </ContentWrapper>
+          </ViewToggleProvider>
+
         {/* <LogInForm /> */}
       </PageWrapper>
     )

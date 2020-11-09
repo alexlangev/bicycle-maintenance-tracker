@@ -13,7 +13,6 @@ const DropdownMenuNav = (props) => {
   const handleClickOpen  = () => {
     setIsOpen(!isOpen);
   }
-  console.log(isOpen);
 
   return(
     <DropdownMenuNavWrapper>
