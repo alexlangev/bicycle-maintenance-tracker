@@ -10,6 +10,7 @@ const PORT = 5150;
 //handlers
 const handleTest = require('./handlers/handleTest');
 const handleGetActivities = require('./handlers/handleGetActivities');
+const handleGetParts = require('./handlers/mongoHandlers/handleGetParts');
 
 express()
   .use(morgan('tiny'))
@@ -19,4 +20,5 @@ express()
   // Endpoints
   .get('/test', handleTest)
   .get('/activities', handleGetActivities)
+  .get('/database/parts', handleGetParts)
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));
