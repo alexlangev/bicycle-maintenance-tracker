@@ -9,8 +9,9 @@ const PORT = 5150;
 
 //handlers
 const handleTest = require('./handlers/handleTest');
-const handleGetActivities = require('./handlers/handleGetActivities');
-const handleGetParts = require('./handlers/mongoHandlers/handleGetParts');
+// const handleGetActivities = require('./handlers/handleGetActivities');
+const handleGetParts = require('./handlers/handleGetParts');
+const handleUpdateUserInfo = require('./handlers/handleUpdateUserInfo')
 
 express()
   .use(morgan('tiny'))
@@ -19,6 +20,8 @@ express()
 
   // Endpoints
   .get('/test', handleTest)
-  .get('/activities', handleGetActivities)
+  //this following handler is now a function called inside handleUpdateUserInfo
+  // .get('/activities', handleGetActivities)
   .get('/database/parts', handleGetParts)
+  .get('/updateUserData', handleUpdateUserInfo)
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));

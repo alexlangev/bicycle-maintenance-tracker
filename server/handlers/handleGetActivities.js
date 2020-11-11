@@ -1,6 +1,6 @@
 require('dotenv').config({ path: '../.env' });
 
-const handleGetActivities = (req, res) => {
+const handleGetActivities = async (req, res) => {
   //Info on my Strava account?
   const CLIENT_ID = process.env.CLIENT_ID;
   const CLIENT_SECRET = process.env.CLIENT_SECRET;
@@ -13,19 +13,20 @@ const handleGetActivities = (req, res) => {
   const callActivitiesUrl = `https://www.strava.com/api/v3/athlete/activities?access_token=`
 
   //first fetch returns access credentials. We are interested only in the access token
-  fetch(callRefreshUrl, {
-    method: 'POST'
-  })
-  .then(res => res.json())
-  .then(accessCredentials => accessCredentials.access_token)
-
-  //This second fetch takes the access token and returns an array of activities (NESTED FETCHES WATCH OUT!)
-  .then(accessToken => {      
-    return fetch(callActivitiesUrl + accessToken) 
-  }) 
-  .then(res => res.json())
-  .then(res => console.log(res))
-  .catch(err => console.log(err));
+    try {
+      const accessCredentialsResponse = await fetch(callRefreshUrl, {
+        method: 'POST'
+      })
+      const accessCredentials =
+      await accessCredentialsResponse.json();
+      const accessToken = await accessCredentials.access_token;
+      const activitiesList  = await fetch(callActivitiesUrl + accessToken);
+  
+      const activities = await activitiesList.json();
+      return activities;
+    } catch (err) {
+      console.log(err.stack);
+    }
 }
 
 module.exports = handleGetActivities;
