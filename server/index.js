@@ -11,7 +11,7 @@ const PORT = 5150;
 const handleTest = require('./handlers/handleTest');
 // const handleGetActivities = require('./handlers/handleGetActivities');
 const handleGetParts = require('./handlers/handleGetParts');
-const handleUpdateUserInfo = require('./handlers/handleUpdateUserInfo')
+const handleGetUserData = require('./handlers/handleGetUserData')
 
 express()
   .use(morgan('tiny'))
@@ -23,5 +23,5 @@ express()
   //this following handler is now a function called inside handleUpdateUserInfo
   // .get('/activities', handleGetActivities)
   .get('/database/parts', handleGetParts)
-  .get('/updateUserData', handleUpdateUserInfo)
+  .get('/getUserData', handleGetUserData)
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));
