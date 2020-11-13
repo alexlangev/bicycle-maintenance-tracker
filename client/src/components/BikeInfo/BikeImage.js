@@ -38,11 +38,17 @@ const BikeImage = () => {
       role="button"
       tabIndex="0"
     />
+    <Casette 
+      src='/images/cassette.png'
+      onClick={() => setSelectedPart('cassette')}
+      role="button"
+      tabIndex="0"
+    />
     </BikeImageWrapper>
   )
 }
 
-const BikeImageWrapper = styled.div`  
+const BikeImageWrapper = styled.div`
   display: flex;
   flex-direction:column;
   justify-content: flex-start;
@@ -57,14 +63,14 @@ const CompleteBike = styled.img`
 `
 
 const Chain = styled.img`
-  z-index: 1;
+  z-index: 2;
   width: 34%;
   transform: translate(50%,-172%);
 
 `
 
 const Chainrings = styled.img`
-  z-index: 1;
+  z-index: 2;
   width: 12.5%;
   transform: translate(305%,-286%);
 
@@ -81,6 +87,12 @@ const RearTire = styled.img`
   z-index: 1;
   width: 41%;
   transform: translate(0%,-261.5%);
+`
+
+const Casette = styled.img`
+  z-index: 3;
+  width: 6.5%;
+  transform: translate(255%,-1983%);
 `
 
 export default BikeImage;
