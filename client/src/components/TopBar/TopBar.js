@@ -14,7 +14,7 @@ const TopBarWrapper = styled.div`
   background-color: teal;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
   height: 5vh;
 `
