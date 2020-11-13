@@ -17,38 +17,32 @@ const BikeImage = () => {
         <CompleteBike src='images/complete.png'/>
           {/* Parts are display:none unless they are selected with context */}
         <PartsWrapper>
+
+          <RearTireButton onClick={() => {setSelectedPart('rearTire'); console.log('rearTire')}}>
+            <RearTire src='/images/tire.png'/>
+          </RearTireButton>
+
+
+          <FrontTireButton onClick={() => setSelectedPart('frontTire')}>
+            <FrontTire src='/images/tire.png'/>
+          </FrontTireButton>
+
+
           <ChainButton onClick={() => {setSelectedPart('chain');console.log('chain')}}>
             <Chain src='/images/chain.png'/>
           </ChainButton>
-          
-          <Chainrings 
-            src='/images/chainrings.png'
-            onClick={() => setSelectedPart('chainrings')}
-            role="button"
-            tabIndex="0"
-          />
-          <FrontTire 
-            src='/images/tire.png'
-            onClick={() => setSelectedPart('frontTire')}
-            role="button"
-            tabIndex="0"
-          />
 
-        <RearTireButton onClick={() => {setSelectedPart('rearTire'); console.log('rearTire')}}>
-          <RearTire 
-            src='/images/tire.png'
-          />
-        </RearTireButton>
+          <ChainringsButton onClick={() => setSelectedPart('chainrings')}>
+            <Chainrings src='/images/chainrings.png'/>
+          </ChainringsButton>
 
-          <Casette 
-            src='/images/cassette.png'
-            onClick={() => setSelectedPart('cassette')}
-            role="button"
-            tabIndex="0"
-          />
+
+          <CasetteButton onClick={() => setSelectedPart('cassette')}>
+            <Casette src='/images/cassette.png'/>
+          </CasetteButton>
+
         </PartsWrapper>
       </CompleteBikeWrapper>
-
     </BikeImageWrapper>
   )
 }
@@ -80,36 +74,6 @@ const CompleteBike = styled.img`
   width:100%;
 `
 
-const Chain = styled.img`
-  height: 100%;
-  width: 100%;
-`
-
-const ChainButton = styled(UnstyledButton)`
-  z-index: 3;
-  width: 36%;
-  transform: translate(45%,-330.5%);
-  opacity: 100%;
-  /* border: 1px solid green; */
-  padding: 1%;
-`
-
-const Chainrings = styled.img`
-  z-index: 2;
-  width: 12.5%;
-  transform: translate(32%,-416%);
-  opacity: 0%;
-  /* border: 1px solid green; */
-
-`
-
-const FrontTire = styled.img`
-  z-index: 1;
-  width: 41%;
-  transform: translate(31%,-100.5%);
-  opacity: 0%;
-`
-/////////////////////////////////////////////////////
 const RearTire = styled.img`
   height: 100%;
   width: 100%;
@@ -118,16 +82,57 @@ const RearTire = styled.img`
 const RearTireButton = styled(UnstyledButton)`
   z-index: 1;
   width: 41%;
-  transform: translate(0%,-200.5%);
-  opacity: 0%;
+  transform: translate(0%,-100.5%);
+  opacity: 100%;
 `
 
+const FrontTire = styled.img`
+  height: 100%;
+  width: 100%;
+`
 
-const Casette = styled.img`
+const FrontTireButton = styled(UnstyledButton)`
+  z-index: 1;
+  width: 41%;
+  transform: translate(44%,-100%);
+  opacity: 100%;
+`
+
+const Chain = styled.img`
+  height: 100%;
+  width: 100%;
+`
+
+const ChainButton = styled(UnstyledButton)`
+  z-index: 3;
+  width: 36%;
+  transform: translate(45%,-425.5%);
+  opacity: 100%;
+  padding: 1%;
+`
+
+const Chainrings = styled.img`
+  width: 100%;
+  height: 100%;
+`
+
+const ChainringsButton = styled(UnstyledButton)`
+  z-index: 2;
+  width: 12.5%;
+  transform: translate(18%,-523%);
+  opacity: 100%;
+`
+
+const CasetteButton = styled(UnstyledButton)`
   z-index: 4;
   width: 6.5%;
-  transform: translate(-371%,-1509%);
-  opacity: 0%;
+  transform: translate(-490%,-1058%);
+  opacity: 100%;
+`
+
+const Casette = styled.img`
+  width: 100%;
+  height: 100%;
 `
 
 export default BikeImage;
