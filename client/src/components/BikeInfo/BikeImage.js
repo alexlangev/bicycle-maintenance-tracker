@@ -13,9 +13,16 @@ const BikeImage = () => {
   return (
     <BikeImageWrapper>
       <CompleteBike src='images/complete.png'/>
+      {/* Parts are display:none unless they are selected with context */}
       <Chain 
         src='/images/chain.png'
         onClick={() => setSelectedPart('chain')}
+        role="button"
+        tabIndex="0"
+      />
+      <Chainrings 
+        src='/images/chainrings.png'
+        onClick={() => setSelectedPart('chainrings')}
         role="button"
         tabIndex="0"
       />
@@ -41,6 +48,13 @@ const Chain = styled.img`
   z-index: 1;
   width: 34%;
   transform: translate(50%,-172%);
+`
+
+const Chainrings = styled.img`
+  z-index: 1;
+  width: 12.5%;
+  transform: translate(305%,-286%);
+  /* display: none; */
 `
 
 export default BikeImage;
