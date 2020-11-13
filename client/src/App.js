@@ -8,7 +8,7 @@ import Sidebar from './components/Sidebar/SideBar';
 import BikeInfo from './components/BikeInfo/index';
 
 import { ViewToggleProvider } from './Context/ViewToggleContext';
-import { FaUserAstronaut } from 'react-icons/fa';
+import { SelectedPartProvider } from './Context/SelectedPartContext';
 
 function App() {
   //State relating to loading
@@ -41,12 +41,15 @@ function App() {
       <PageWrapper>
         <GlobalStyle />
         <TopBar />
+
+          <SelectedPartProvider>
           <ViewToggleProvider>
             <ContentWrapper>
               <Sidebar />
               <BikeInfo />
             </ContentWrapper>
           </ViewToggleProvider>
+          </SelectedPartProvider>
 
         {/* <LogInForm /> */}
       </PageWrapper>
