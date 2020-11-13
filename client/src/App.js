@@ -6,6 +6,7 @@ import GlobalStyle from './GlobalStyle';
 import TopBar from './components/TopBar/TopBar';
 import Sidebar from './components/Sidebar/SideBar';
 import BikeInfo from './components/BikeInfo/index';
+import LogInPage from './components/logIn/LogInPage';
 
 import { ViewToggleProvider } from './Context/ViewToggleContext';
 import { SelectedPartProvider } from './Context/SelectedPartContext';
@@ -14,7 +15,7 @@ function App() {
   //State relating to loading
   const [loadingStatus, setLoadingStatus] = React.useState('idle');
   //State relating to having client info or not
-  const [isLoggedIn, setIsLoggedIn] = React.useState(true);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
   //useEffect fetch user info? LogIn something happens...
   React.useEffect(() => {
@@ -26,7 +27,7 @@ function App() {
       return userData;
     }
     
-    fetchUserData();
+    // fetchUserData();
 
   });
 
@@ -50,9 +51,11 @@ function App() {
             </ContentWrapper>
           </ViewToggleProvider>
           </SelectedPartProvider>
-
-        {/* <LogInForm /> */}
       </PageWrapper>
+    )
+  } else {
+    return (
+      <LogInPage />
     )
   }
 }
