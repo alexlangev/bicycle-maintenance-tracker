@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 //Context for the selection of parts
 import { SelectedPartContext } from '../../Context/SelectedPartContext';
+import UnstyledButton from '../UnstyledButton';
 
 //Color codes for the color legend
 const greenPart = '#3f992b';
@@ -16,12 +17,10 @@ const BikeImage = () => {
         <CompleteBike src='images/complete.png'/>
           {/* Parts are display:none unless they are selected with context */}
         <PartsWrapper>
-          <Chain 
-            src='/images/chain.png'
-            onClick={() => setSelectedPart('chain')}
-            role="button"
-            tabIndex="0"
-          />
+          <ChainButton onClick={() => {setSelectedPart('chain');console.log('chain')}}>
+            <Chain src='/images/chain.png'/>
+          </ChainButton>
+          
           <Chainrings 
             src='/images/chainrings.png'
             onClick={() => setSelectedPart('chainrings')}
@@ -34,12 +33,13 @@ const BikeImage = () => {
             role="button"
             tabIndex="0"
           />
+
+        <RearTireButton onClick={() => {setSelectedPart('rearTire'); console.log('rearTire')}}>
           <RearTire 
             src='/images/tire.png'
-            onClick={() => setSelectedPart('rearTire')}
-            role="button"
-            tabIndex="0"
           />
+        </RearTireButton>
+
           <Casette 
             src='/images/cassette.png'
             onClick={() => setSelectedPart('cassette')}
@@ -61,7 +61,7 @@ const BikeImageWrapper = styled.div`
   width: 75%;
   height: auto;
   filter: grayscale(100%);
-  border: 2px solid green;
+  border: 1px solid green;
 `
 
 const CompleteBikeWrapper = styled.div`
@@ -81,10 +81,17 @@ const CompleteBike = styled.img`
 `
 
 const Chain = styled.img`
-  z-index: 2;
-  width: 34%;
-  transform: translate(50%,-389.5%);
-  opacity: 0%;
+  height: 100%;
+  width: 100%;
+`
+
+const ChainButton = styled(UnstyledButton)`
+  z-index: 3;
+  width: 36%;
+  transform: translate(45%,-330.5%);
+  opacity: 100%;
+  /* border: 1px solid green; */
+  padding: 1%;
 `
 
 const Chainrings = styled.img`
@@ -92,6 +99,8 @@ const Chainrings = styled.img`
   width: 12.5%;
   transform: translate(32%,-416%);
   opacity: 0%;
+  /* border: 1px solid green; */
+
 `
 
 const FrontTire = styled.img`
@@ -100,16 +109,22 @@ const FrontTire = styled.img`
   transform: translate(31%,-100.5%);
   opacity: 0%;
 `
-
+/////////////////////////////////////////////////////
 const RearTire = styled.img`
+  height: 100%;
+  width: 100%;
+`
+
+const RearTireButton = styled(UnstyledButton)`
   z-index: 1;
   width: 41%;
   transform: translate(0%,-200.5%);
   opacity: 0%;
 `
 
+
 const Casette = styled.img`
-  z-index: 3;
+  z-index: 4;
   width: 6.5%;
   transform: translate(-371%,-1509%);
   opacity: 0%;

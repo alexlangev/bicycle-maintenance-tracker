@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 //Context for the selection of parts
 import { SelectedPartContext } from '../../Context/SelectedPartContext';
+import UnstyledButton from '../UnstyledButton';
 
 const PartInfo = () => {
   const {selectedPart, setSelectedPart} = React.useContext(SelectedPartContext);
