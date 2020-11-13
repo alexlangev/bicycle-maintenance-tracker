@@ -24,7 +24,7 @@ const PartInfo = () => {
 }
 
 const PartInfoWrapper = styled.div`
-  margin: 5vh 5vh 0 0;
+  margin: 0 5vh 0 0;
   border: 3px solid white;
   width: 25%;
   min-width: 225pt;
