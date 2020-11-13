@@ -9,9 +9,9 @@ const PORT = 5150;
 
 //handlers
 const handleTest = require('./handlers/handleTest');
-// const handleGetActivities = require('./handlers/handleGetActivities');
 const handleGetParts = require('./handlers/handleGetParts');
-const handleGetUserData = require('./handlers/handleGetUserData')
+const handleGetUserData = require('./handlers/handleGetUserData');
+const handleUpdateUser = require('./handlers/handleUpdateUser');
 
 express()
   .use(morgan('tiny'))
@@ -20,8 +20,7 @@ express()
 
   // Endpoints
   .get('/test', handleTest)
-  //this following handler is now a function called inside handleUpdateUserInfo
-  // .get('/activities', handleGetActivities)
-  .get('/database/parts', handleGetParts)
-  .get('/getUserData', handleGetUserData)
+  .get('/database/parts', handleGetParts) //from mongo
+  .get('/getUserData', handleGetUserData) //from strava
+  .post('/updateUser', handleUpdateUser) //to mongo need body {"_id": "","bicycleData" : "","activities": ""}
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));

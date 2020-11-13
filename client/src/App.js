@@ -8,6 +8,7 @@ import Sidebar from './components/Sidebar/SideBar';
 import BikeInfo from './components/BikeInfo/index';
 
 import { ViewToggleProvider } from './Context/ViewToggleContext';
+import { FaUserAstronaut } from 'react-icons/fa';
 
 function App() {
   //State relating to loading
@@ -15,7 +16,19 @@ function App() {
   //State relating to having client info or not
   const [isLoggedIn, setIsLoggedIn] = React.useState(true);
 
-  //useEffect fetch user info?
+  //useEffect fetch user info? LogIn something happens...
+  React.useEffect(() => {
+    
+    const fetchUserData = async () => {
+      const fetchUserData = await fetch('/getUserData');
+      const userData = await fetchUserData.json();
+      await console.log(userData);
+      return userData;
+    }
+    
+    fetchUserData();
+
+  });
 
   if (isLoggedIn === false && loadingStatus === 'loading'){
     return (

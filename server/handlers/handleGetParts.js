@@ -23,7 +23,6 @@ const options = {
 };
 
 const handleGetParts = async (req, res) => {
-  console.log(MONGO_URI)
   //Setting up the client
   const client = await MongoClient(MONGO_URI, options);
   try {

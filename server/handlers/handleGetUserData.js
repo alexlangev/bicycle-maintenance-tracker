@@ -12,9 +12,6 @@ const accessToken = await userInfo[1];
 
 //This will give us the id of the user named athleteId
 const athleteId = await activities[0].athlete.id;
-console.log(activities);
-console.log("athleteId", athleteId);
-console.log(accessToken);
 
 //This will give us an array of all the bicycle gear_ids of the athlete
 let bicycleData = {};
@@ -24,7 +21,6 @@ for (const data of activities){
   bicycleData[bicycleId]
   = {bikeData};
 }
-console.log("bicycles: ", bicycleData);
 
 let userData = {
   _id: athleteId,
