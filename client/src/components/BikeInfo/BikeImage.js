@@ -26,6 +26,18 @@ const BikeImage = () => {
         role="button"
         tabIndex="0"
       />
+    <FrontTire 
+      src='/images/tire.png'
+      onClick={() => setSelectedPart('frontTire')}
+      role="button"
+      tabIndex="0"
+    />
+    <RearTire 
+      src='/images/tire.png'
+      onClick={() => setSelectedPart('rearTire')}
+      role="button"
+      tabIndex="0"
+    />
     </BikeImageWrapper>
   )
 }
@@ -48,13 +60,27 @@ const Chain = styled.img`
   z-index: 1;
   width: 34%;
   transform: translate(50%,-172%);
+
 `
 
 const Chainrings = styled.img`
   z-index: 1;
   width: 12.5%;
   transform: translate(305%,-286%);
-  /* display: none; */
+
+`
+
+const FrontTire = styled.img`
+  z-index: 1;
+  width: 41%;
+  transform: translate(144.5%,-161.5%);
+
+`
+
+const RearTire = styled.img`
+  z-index: 1;
+  width: 41%;
+  transform: translate(0%,-261.5%);
 `
 
 export default BikeImage;
