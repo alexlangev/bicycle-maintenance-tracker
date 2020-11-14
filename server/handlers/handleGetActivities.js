@@ -1,9 +1,10 @@
-require('dotenv').config({ path: '../.env' });
+require('dotenv').config();
 
 const handleGetActivities = async () => {
   //Info on my Strava account?
   const CLIENT_ID = process.env.CLIENT_ID;
   const CLIENT_SECRET = process.env.CLIENT_SECRET;
+  console.log(CLIENT_ID, CLIENT_SECRET)
 
   //Tokens
   const REFRESH_TOKEN = process.env.REFRESH_TOKEN;

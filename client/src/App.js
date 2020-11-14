@@ -12,10 +12,30 @@ import { ViewToggleProvider } from './Context/ViewToggleContext';
 import { SelectedPartProvider } from './Context/SelectedPartContext';
 
 function App() {
-  //State relating to loading
-  const [loadingStatus, setLoadingStatus] = React.useState('idle');
-  //State relating to having client info or not
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+    //State relating to loading
+    const [loadingStatus, setLoadingStatus] = React.useState('idle');
+    //State relating to having client info or not
+    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+
+    //MAKE IT SO WHEN URL CHANGE???
+    React.useEffect(()=>{
+    //Getting the authorizationToken from window url
+      const windowUrl = window.location.href;
+      if(windowUrl.includes('exchange_token?state=&code=')){
+        const authTokenString = windowUrl.split('=')[2];
+        const authToken = authTokenString.split('&')[0];
+        setLoadingStatus('loading');
+
+    //Getting the athlete's refresh token and access token(every 6h)
+    const getUserInfo = async () => {
+      const userInfo = await fetch(`/getUser/${authToken}`)
+      console.log(userInfo);
+    }
+    getUserInfo();
+  }
+    },[])
+
+
 
   //useEffect fetch user info? LogIn something happens...
 

@@ -5,7 +5,7 @@ import UnstyledButton from '../UnstyledButton';
 const LogInPage = () => {
   const CLIENT_ID = '55495'; //This is not a secret
   const authPageUrl = `http://www.strava.com/oauth/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=http://localhost:3000/exchange_token&approval_prompt=force&scope=read_all,activity:read_all`;
-
+  console.log(CLIENT_ID);
 
   return (
     <PageWrapper>
