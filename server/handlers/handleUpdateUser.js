@@ -1,3 +1,6 @@
+//This Function takes all the relevant user information and creates or updates the user
+//in the database with mongoDB
+
 'use strict';
 //MongoDB stuff
 require('dotenv').config({path: '.env'});
@@ -9,17 +12,16 @@ const options = {
   useUnifiedTopology: true,
 };
 
-const handleUpdateUser = async (req, res) => {
+const handleUpdateUser = async (userInfo,BikeData,userActivities) => {
   //Setting up the client and query
   const client = await MongoClient(MONGO_URI, options);
-  const {_id, bicycleData, activities} = req.body;
-
+  const _id = userInfo.athlete.id;
   //For the mongo upsert method
   const query = { '_id': _id };
   const update = {$set:{
     _id: _id,
-    bicycleData: bicycleData,
-    activities: activities,
+    BikeData: BikeData,
+    userActivities: userActivities,
   }
   };
 
@@ -30,10 +32,11 @@ const handleUpdateUser = async (req, res) => {
     
     //Figure this out later
     // assert.equal(1 , athlete.upsertedCount) ;
-    res.status(204).json({ status: 204, success: true });
+    return 'succes'
+    // res.status(204).json({ status: 204, success: true });
   } catch (err) {
     console.log(err.stack);
-    res.status(500).json({status: 500, message: err.message});
+    // res.status(500).json({status: 500, message: err.message});
   }
   client.close();
 }

@@ -23,8 +23,9 @@ express()
   // Endpoints
   .get('/test', handleTest)
   .get('/getUser/:authToken', handleGetUser)//from the log in. exchange auth token for refresh and access token
-///////////////// Not used yet /////////////////////////////
-  .get('/database/parts', handleGetParts) //from mongo
   .get('/getUserData', handleGetUserData) //from strava
   .post('/updateUser', handleUpdateUser) //to mongo need body {"_id": "","bicycleData" : "","activities": ""}
+
+///////////////// Not used yet /////////////////////////////
+  .get('/database/parts', handleGetParts) //from mongo
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));

@@ -10,12 +10,14 @@ import LogInPage from './components/logIn/LogInPage';
 
 import { ViewToggleProvider } from './Context/ViewToggleContext';
 import { SelectedPartProvider } from './Context/SelectedPartContext';
+import { CurrentUserProvider } from './Context/CurrentUserContext';
 
 function App() {
     //State relating to loading
     const [loadingStatus, setLoadingStatus] = React.useState('idle');
     //State relating to having client info or not
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+    const [currentUser, setCurrentUser]= React.useState('none');
 
     //MAKE IT SO WHEN URL CHANGE???
     React.useEffect(()=>{
@@ -26,10 +28,15 @@ function App() {
         const authToken = authTokenString.split('&')[0];
         setLoadingStatus('loading');
 
-    //Getting the athlete's refresh token and access token(every 6h)
+    //With the auth token, this function creates or updates the userdata in the database and
+    //returns the data and updates the states
     const getUserInfo = async () => {
-      const userInfo = await fetch(`/getUser/${authToken}`)
-      console.log(userInfo);
+      const userInforesponse = await fetch(`/getUser/${authToken}`)
+      
+      //should get a response from DB with all the info about user.
+      const userInfo = await userInforesponse.json();
+      //set the current user as his userInfo?
+      console.log(currentUser);
     }
     getUserInfo();
   }
@@ -51,6 +58,7 @@ function App() {
         <GlobalStyle />
         <TopBar />
 
+          <CurrentUserProvider>
           <SelectedPartProvider>
           <ViewToggleProvider>
             <ContentWrapper>
@@ -59,6 +67,7 @@ function App() {
             </ContentWrapper>
           </ViewToggleProvider>
           </SelectedPartProvider>
+          </CurrentUserProvider>
       </PageWrapper>
     )
   } else {

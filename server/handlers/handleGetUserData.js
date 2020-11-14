@@ -1,35 +1,22 @@
 require('dotenv').config({ path: '../.env' });
 
-const handleGetActivities = require('./handleGetActivities');
 const handleGetBicycleNames = require('./handleGetBicycleNames');
 
 //This function will return all the relavant user information,(his Strava id, 
 //his one time accessToken, a list of his bicycles and a list of activities)
-const handleGetUserData = async (req,res) => {
-const userInfo = await handleGetActivities();
-const activities = await userInfo[0];
-const accessToken = await userInfo[1];
-
-//This will give us the id of the user named athleteId
-const athleteId = await activities[0].athlete.id;
-
+const handleGetUserData = async (accessToken, userActivities) => {
 //This will give us an array of all the bicycle gear_ids of the athlete
 let bicycleData = {};
-for (const data of activities){
+for (const data of userActivities.activities){
   const bicycleId = data.gear_id;
+  //This function takes the gear id and return the bicycle name given by the user on Strava
   const bikeData = await handleGetBicycleNames(accessToken, bicycleId);
   bicycleData[bicycleId]
   = {bikeData};
 }
 
-let userData = {
-  _id: athleteId,
-  accessToken: accessToken,
-  bicycleData: bicycleData,
-  activities: activities,
-}
 
-res.status(200).json({status:200, user_data: userData});
+return bicycleData;
 }
 
 module.exports = handleGetUserData;
