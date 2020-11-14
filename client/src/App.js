@@ -18,18 +18,6 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
   //useEffect fetch user info? LogIn something happens...
-  React.useEffect(() => {
-    
-    const fetchUserData = async () => {
-      const fetchUserData = await fetch('/getUserData');
-      const userData = await fetchUserData.json();
-      await console.log(userData);
-      return userData;
-    }
-    
-    // fetchUserData();
-
-  });
 
   if (isLoggedIn === false && loadingStatus === 'loading'){
     return (
