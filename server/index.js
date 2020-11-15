@@ -1,3 +1,5 @@
+//Gears Icon made by https://www.flaticon.com/authors/freepik
+
 'use strict';
 const path = require('path');
 const express = require('express');

@@ -15,7 +15,7 @@ const TopBar = () => {
 
   return (
     <TopBarWrapper>
-      <p>LOGO</p>
+      <Logo src='/images/gears.png'/>
       {currentUser!=='none'?<p>{`Welcome ${currentUser.userInfo.athlete.firstname}`}</p>:<p></p>}
       <SignOutButton onClick={handleLogOut}>Log Out</SignOutButton>
     </ TopBarWrapper>
@@ -23,7 +23,6 @@ const TopBar = () => {
 }
 
 const TopBarWrapper = styled.div`
-  background-color: teal;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -31,10 +30,18 @@ const TopBarWrapper = styled.div`
   height: 5vh;
 `
 
+const Logo = styled.img`
+  height: 35px;
+  width: 35px;
+  margin-left:10pt;
+
+`
+
 const SignOutButton = styled(UnstyledButton)`
-  border: 1px white solid;
+  background-color: orangered;
   padding: 3pt 15pt;
   margin-right:10pt;
 `
 
 export default TopBar;
+
