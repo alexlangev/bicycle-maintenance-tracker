@@ -1,10 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const TopBar = () => {
+const TopBar = (props) => {
+  const currentUser = props.currentUser;
+  const userFirstName = currentUser.userInfo.athlete.firstname;
+
   return (
     <TopBarWrapper>
       <p>LOGO</p>
+      <p>{`Welcome ${userFirstName}!`}</p>
       <p>Sign Out</p>
     </ TopBarWrapper>
   )

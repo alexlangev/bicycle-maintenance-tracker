@@ -28,15 +28,13 @@ const handleUpdateUser = async (userInfo,BikeData,userActivities) => {
   try {
     await client.connect();
     const db = client.db('MyApp');
-    let athlete = await db.collection('athletes').updateOne(query, update, {upsert: true} );
+    await db.collection('athletes').updateOne(query, update, {upsert: true} );
     
     //Figure this out later
     // assert.equal(1 , athlete.upsertedCount) ;
-    return 'succes'
-    // res.status(204).json({ status: 204, success: true });
+    return 'succes';
   } catch (err) {
     console.log(err.stack);
-    // res.status(500).json({status: 500, message: err.message});
   }
   client.close();
 }

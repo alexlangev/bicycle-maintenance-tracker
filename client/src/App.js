@@ -32,43 +32,55 @@ function App() {
     //returns the data and updates the states
     const getUserInfo = async () => {
       const userInforesponse = await fetch(`/getUser/${authToken}`)
-      
-      //should get a response from DB with all the info about user.
       const userInfo = await userInforesponse.json();
       //set the current user as his userInfo?
-      console.log(currentUser);
+      if (userInfo.updateUserResponse === 'succes'){
+        setIsLoggedIn(true);
+        setCurrentUser(userInfo);
+        setLoadingStatus('idle');
+      }
     }
     getUserInfo();
   }
     },[])
 
-
+console.log("from app: ", loadingStatus, isLoggedIn, currentUser)
 
   //useEffect fetch user info? LogIn something happens...
 
   if (isLoggedIn === false && loadingStatus === 'loading'){
     return (
-      <PageWrapper>
-        Loading...
-      </PageWrapper>
+      <CurrentUserProvider>
+      <SelectedPartProvider>
+      <ViewToggleProvider>
+        <PageWrapper>
+          Loading...
+        </PageWrapper>
+      </ViewToggleProvider>
+      </SelectedPartProvider>
+      </CurrentUserProvider>
+
     )
   } else if (isLoggedIn === true && loadingStatus === 'idle'){
     return (
+      <CurrentUserProvider>
+      <SelectedPartProvider>
+      <ViewToggleProvider>
+
       <PageWrapper>
         <GlobalStyle />
-        <TopBar />
+        <TopBar currentUser={currentUser} />
 
-          <CurrentUserProvider>
-          <SelectedPartProvider>
-          <ViewToggleProvider>
-            <ContentWrapper>
-              <Sidebar />
-              <BikeInfo />
-            </ContentWrapper>
-          </ViewToggleProvider>
-          </SelectedPartProvider>
-          </CurrentUserProvider>
+        <ContentWrapper>    
+          <Sidebar />
+          <BikeInfo />
+        </ContentWrapper>
+
       </PageWrapper>
+
+      </ViewToggleProvider>
+      </SelectedPartProvider>
+      </CurrentUserProvider>
     )
   } else {
     return (

@@ -30,7 +30,7 @@ const handleGetUser = async (req, res) => {
     //With all that information we can create/update user in DB
 
     const updateUserResponse = await handleUpdateUser(userInfo,BikeData,userActivities);
-
+    
     res.status(200).json({
       userInfo,
       userActivities,

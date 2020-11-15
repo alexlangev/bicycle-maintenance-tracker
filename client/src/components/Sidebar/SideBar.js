@@ -15,6 +15,7 @@ const Sidebar = () => {
     setIsCollapsed(!isCollapsed);
   }
 
+
   return(
     <SidebarWrapper>
       <SidebarMenu 

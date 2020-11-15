@@ -10,7 +10,6 @@ import { ViewToggleContext } from '../../Context/ViewToggleContext';
 const ViewToggle = (props) => {
 
   const {viewToggle, setViewToggle} = React.useContext(ViewToggleContext);
-  console.log(viewToggle);
   
   return (
     <ViewToggleWrapper>

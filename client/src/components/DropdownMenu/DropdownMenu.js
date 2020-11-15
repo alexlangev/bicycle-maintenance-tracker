@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import DropdownItem from './DropdownItem';
 
-const DropdownMenu = () => {
+
+const DropdownMenu = (props) => {
+
   return(
-    <Dropdown className='Dropdown'>
-      <DropdownItem>Velo1</DropdownItem>
-      <DropdownItem>Velo2</DropdownItem>
-    </Dropdown>
+      <Dropdown className='Dropdown'>
+        <DropdownItem>Velo1</DropdownItem>
+        <DropdownItem>Velo2</DropdownItem>
+      </Dropdown>
   )
 }
 
