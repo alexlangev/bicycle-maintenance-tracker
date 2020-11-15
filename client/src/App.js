@@ -7,17 +7,18 @@ import TopBar from './components/TopBar/TopBar';
 import Sidebar from './components/Sidebar/SideBar';
 import BikeInfo from './components/BikeInfo/index';
 import LogInPage from './components/logIn/LogInPage';
-
-import { ViewToggleProvider } from './Context/ViewToggleContext';
-import { SelectedPartProvider } from './Context/SelectedPartContext';
-import { CurrentUserProvider } from './Context/CurrentUserContext';
+//Context imports
+import { IsLoggedInContext } from './Context/IsLoggedInContext';
+import { CurrentUserContext } from './Context/CurrentUserContext';
 
 function App() {
     //State relating to loading
     const [loadingStatus, setLoadingStatus] = React.useState('idle');
-    //State relating to having client info or not
-    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-    const [currentUser, setCurrentUser]= React.useState('none');
+
+    //Subscribing to the contexts
+    const {currentUser, setCurrentUser} = React.useContext(CurrentUserContext)
+    const {isLoggedIn, setIsLoggedIn} = React.useContext(IsLoggedInContext);
+
 
     //MAKE IT SO WHEN URL CHANGE???
     React.useEffect(()=>{
@@ -50,26 +51,18 @@ console.log("from app: ", loadingStatus, isLoggedIn, currentUser)
 
   if (isLoggedIn === false && loadingStatus === 'loading'){
     return (
-      <CurrentUserProvider>
-      <SelectedPartProvider>
-      <ViewToggleProvider>
+
         <PageWrapper>
           Loading...
         </PageWrapper>
-      </ViewToggleProvider>
-      </SelectedPartProvider>
-      </CurrentUserProvider>
+
 
     )
   } else if (isLoggedIn === true && loadingStatus === 'idle'){
     return (
-      <CurrentUserProvider>
-      <SelectedPartProvider>
-      <ViewToggleProvider>
-
       <PageWrapper>
         <GlobalStyle />
-        <TopBar currentUser={currentUser} />
+        <TopBar/>
 
         <ContentWrapper>    
           <Sidebar />
@@ -77,10 +70,6 @@ console.log("from app: ", loadingStatus, isLoggedIn, currentUser)
         </ContentWrapper>
 
       </PageWrapper>
-
-      </ViewToggleProvider>
-      </SelectedPartProvider>
-      </CurrentUserProvider>
     )
   } else {
     return (
