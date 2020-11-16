@@ -6,15 +6,22 @@ import { VscTriangleLeft, VscTriangleRight } from "react-icons/vsc";
 import UnstyledButton from '../UnstyledButton';
 import ViewToggle from './ViewToggle';
 
+import { CurrentUserContext } from '../../Context/CurrentUserContext';
+import { SelectedBicycleContext } from '../../Context/SelectedBicycleContext';
+
+
 const Sidebar = () => {
+  //subsribing to user context and creating an array of his bicycles
+  const {currentUser, setCurrentUser} = React.useContext(CurrentUserContext);
+  const bicycleList = Object.entries(currentUser.BikeData);
+
+  const {selectedBicycle, setSelectedBicycle} = React.useContext(SelectedBicycleContext);
+
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [activeMenu, setActiveMenu] = useState('main');
 
-  const handleCollapseClick = () => {
-    setIsCollapsed(!isCollapsed);
-  }
 
-  console.log(activeMenu);
+console.log(selectedBicycle);
 
   return(
     <SidebarWrapper>
@@ -47,18 +54,21 @@ const Sidebar = () => {
           <SecondaryMenu>
           <SelectBicycle>
               <Button onClick={() => setActiveMenu('main')}>
-                <p>Bike1 <VscTriangleRight/></p>
+                <p><VscTriangleRight/></p>
               </Button>
-            </SelectBicycle>
-            <p>bike2</p>
-            
+              {bicycleList.map(bike => {
+                return <Button 
+                onClick={() => setSelectedBicycle(bike)}
+                >{bike[1].bikeData.name}</Button>
+              })}
+          </SelectBicycle> 
           </SecondaryMenu>
         </CSSTransition>
 
 
 
       </SidebarMenu>
-      <CollapseButton onClick={handleCollapseClick}>
+      <CollapseButton onClick={() => setIsCollapsed(!isCollapsed)}>
         {isCollapsed?<VscTriangleRight/>:<VscTriangleLeft/>}
       </CollapseButton>
     </SidebarWrapper>
@@ -101,8 +111,13 @@ const SelectBicycle = styled.div`
 `
 
 const Button = styled(UnstyledButton)`
+  border: solid 2px black;
   width: 100%;
   height: 100%;
+
+  &:hover {
+    border: 3px solid black;
+  }
 `
 
 const CollapseButton = styled(UnstyledButton)`
