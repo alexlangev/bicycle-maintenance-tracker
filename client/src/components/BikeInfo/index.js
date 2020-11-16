@@ -24,7 +24,6 @@ const BikeInfoWrapper = styled.div`
   flex-direction: row;
   align-items: center;
 
-  border: red 3px solid;
   width: 100%;
   height: 100%;
 `

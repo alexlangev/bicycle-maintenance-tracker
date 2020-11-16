@@ -87,7 +87,7 @@ const PageWrapper = styled.div`
 `
 
 const ContentWrapper = styled.div`
-  background-color: blue;
+  background-color: #4BB2F9;
   height: 95vh;
   width: 100%;
   display: flex;
