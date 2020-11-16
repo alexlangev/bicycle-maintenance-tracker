@@ -15,7 +15,6 @@ for (const data of userActivities.activities){
   = {bikeData};
 }
 
-
 return bicycleData;
 }
 
