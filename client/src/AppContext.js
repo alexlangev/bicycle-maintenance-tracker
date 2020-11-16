@@ -6,11 +6,13 @@ import { ViewToggleProvider } from './Context/ViewToggleContext';
 import { SelectedPartProvider } from './Context/SelectedPartContext';
 import { CurrentUserProvider } from './Context/CurrentUserContext';
 import { IsLoggedInProvider } from './Context/IsLoggedInContext';
+import { SelectedBicycleProvider } from './Context/SelectedBicycleContext';
 
   const AppContext = () => {
     return(
       <CurrentUserProvider>
       <IsLoggedInProvider>
+      <SelectedBicycleProvider>
       <SelectedPartProvider>
       <ViewToggleProvider>
         
@@ -18,6 +20,7 @@ import { IsLoggedInProvider } from './Context/IsLoggedInContext';
 
       </ViewToggleProvider>
       </SelectedPartProvider>
+      </SelectedBicycleProvider>
       </IsLoggedInProvider>
       </CurrentUserProvider>
     )

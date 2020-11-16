@@ -19,7 +19,7 @@ const ViewToggle = (props) => {
           </Button>
         </OptionWrapper>
 
-        <OptionWrapper>
+        <OptionWrapper style={{borderLeft: "2px solid black"}}>
           <Button onClick={() => setViewToggle('image')}>
             <FaBicycle size={32}/>
           </Button>
@@ -37,12 +37,14 @@ const ViewToggleWrapper = styled.div`
 `
 
 const OptionWrapper = styled.div`
-  border: solid 2px white;
   width: 50%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  &:hover {
+    border: 2px solid black;
+  }
 `
 
 const Button = styled(UnstyledButton)`

@@ -62,6 +62,44 @@ const GlobalStyle = createGlobalStyle`
         content: '';
         content: none;
     }
+
+    /* CSS transition stuff */
+    menu-primary-enter {
+        /* transform: translateX(110%); */
+    }
+    menu-primary-enter-active {
+
+        /* transform: translateX(0%);
+        transition: ease transform 1000ms; */
+    }
+    menu-primary-exit {
+    }
+    menu-primary-exit-active {
+
+/* 
+        transform: translateX(-110%);
+        transition: ease transform 1000ms; */
+    }
+
+
+
+
+
+    menu-secondary-enter {
+        /* transform: translateX(110%); */
+    }
+    menu-secondary-enter-active {
+/* 
+        transform: translateX(0%);
+        transition: ease transform 1000ms; */
+    }
+    menu-secondary-exit {
+    }
+    menu-secondary-exit-active {
+
+        /* transform: translateX(-110%);
+        transition: ease transform 1000ms; */
+    }
 `;
 
 export default GlobalStyle;

@@ -5,18 +5,27 @@ import PartInfo from './PartInfo';
 import BikeList from './BikeList';
 
 import { ViewToggleContext } from '../../Context/ViewToggleContext';
-
+import { SelectedBicycleContext } from '../../Context/SelectedBicycleContext';
 
 const BikeInfo = (props) => {
-
+  const {selectedBicycle, setSelectedBicycle} = React.useContext(SelectedBicycleContext);
   const {viewToggle} = React.useContext(ViewToggleContext);
 
-  return (
+
+  if(selectedBicycle.name === 'none'){
+    return(
     <BikeInfoWrapper>
-      {viewToggle === 'image'?<BikeImage />:<BikeList />}
-      <PartInfo />
+      <p>please Select your bike in the menu</p>
     </BikeInfoWrapper>
-  )
+    )
+  } else {
+    return (
+      <BikeInfoWrapper>
+        {viewToggle === 'image'?<BikeImage />:<BikeList />}
+        <PartInfo />
+      </BikeInfoWrapper>
+    )
+  }
 }
 
 const BikeInfoWrapper = styled.div`
