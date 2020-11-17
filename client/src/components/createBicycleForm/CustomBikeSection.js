@@ -1,26 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { VscTriangleDown, VscTriangleUp} from "react-icons/vsc";
+import { VscTriangleRight, VscTriangleUp} from "react-icons/vsc";
 
 
 const CustomBikeSection = () => {
 
-  const [isCollapsed, setIsCollapsed] = React.useState(true);
+  const [chainIsCollapsed, setChainIsCollapsed] = React.useState(true);
 
-
-  if (isCollapsed === true) {
-    return(
-      <CompleteBikeSectionWrapper>
+    return (
+    <CustomBikeSectionWrapper>
       <Form>
-        <p>Select your bike parts</p>
+        <DropdownPrompt
+          onClick={()=>setChainIsCollapsed(!chainIsCollapsed)}
+        >chain<VscTriangleRight/></DropdownPrompt>
+        {chainIsCollapsed?<p>test</p>:<div/>}
+
       </Form>
-    </CompleteBikeSectionWrapper>
-    )
-  }
+    </CustomBikeSectionWrapper>
+  )
 }
 
-const CompleteBikeSectionWrapper = styled.div`
+const CustomBikeSectionWrapper = styled.div`
   margin: auto;
   height: 100%;
   width: 100%;
@@ -30,7 +31,16 @@ const CompleteBikeSectionWrapper = styled.div`
 `
 
 const Form = styled.form`
+  display: flex;
+  flex-direction: column;
 `
 
+const DropdownPrompt = styled.div`
+  background-color: coral;
+`
 
-export default CustomBikeSection;
+const DropdownSelection = styled.div`
+  background-color: coral;
+`
+
+export default CustomBikeSection

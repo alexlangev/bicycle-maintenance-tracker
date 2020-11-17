@@ -23,9 +23,9 @@ const CompleteBikeSection = () => {
   return (
     <CompleteBikeSectionWrapper>
       <Form>
-        <dropdownSelection
+        <DropdownSelection
           onClick={() => setIsCollapsed(!isCollapsed)}
-        >Select your bicycle<VscTriangleUp /></dropdownSelection>
+        >Select your bicycle<VscTriangleUp /></DropdownSelection>
         <p>test1</p>
         <p>test1</p>
         <p>test1</p>
@@ -43,10 +43,13 @@ const CompleteBikeSectionWrapper = styled.div`
   align-items: flex-start;
 `
 
+const Title = styled.p`
+`
+
 const Form = styled.form`
 `
 
-const dropdownSelection = styled.div`
+const DropdownSelection = styled.div`
   background-color: coral;
 `
 

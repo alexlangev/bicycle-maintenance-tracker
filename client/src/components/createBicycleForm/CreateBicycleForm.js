@@ -18,7 +18,7 @@ const CreateBicycleForm = () => {
           <label for="custom">Custom Bicycle</label>
         </CompleteBike>
         
-        {isCompleteBike?<CompleteBikeSection />:<p>false</p>}
+        {isCompleteBike?<CompleteBikeSection />:<CustomBikeSection />}
       </Form>
     </CreateBicycleFormWrapper>
   )
