@@ -17,6 +17,7 @@ const handleGetUserData = require('./handlers/handleGetUserData');
 const handleUpdateUser = require('./handlers/handleUpdateUser');
 const handleSelectBike = require('./handlers/handleSelectBike');
 const handleGetCompleteBicycles = require('./handlers/handleGetCompleteBicycles');
+const handleSubmitForm = require('./handlers/handleSubmitForm');
 
 express()
   .use(morgan('tiny'))
@@ -31,5 +32,6 @@ express()
   .get('/selectBike/:_id/:_gear_id', handleSelectBike)
   .get('/database/completeBicycles', handleGetCompleteBicycles)
   .get('/database/parts', handleGetParts) //from mongo
+  .post('/database/submit', handleSubmitForm)
 
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));

@@ -3,15 +3,19 @@ import styled from 'styled-components';
 
 import { VscTriangleDown, VscTriangleUp} from "react-icons/vsc";
 import { CompleteBicyclesDbContext } from '../../Context/CompleteBicyclesDbContext';
+import {SelectedBicycleContext} from '../../Context/SelectedBicycleContext';
+import {CurrentUserContext} from '../../Context/CurrentUserContext';
 
+import UnstyledButton from '../UnstyledButton';
 
 const CompleteBikeSection = () => {
 
   const [isCollapsed, setIsCollapsed] = React.useState(true);
+  const [formSelectedBicycle, setFormSelectedBicycle] = React.useState('none');
 
   const {completeBicyclesDb, setcompleteBicyclesDb} = React.useContext(CompleteBicyclesDbContext);
-
-  console.log(completeBicyclesDb, completeBicyclesDb[0]);
+  const {selectedBicycle, setSelectedBicycle} = React.useContext(SelectedBicycleContext);
+  const {currentUser, setCurrentUser} = React.useContext(CurrentUserContext);
 
   if (isCollapsed === true) {
     return(
@@ -21,6 +25,13 @@ const CompleteBikeSection = () => {
           onClick={() => setIsCollapsed(!isCollapsed)}
         >Select your bicycle<VscTriangleDown /></DropdownSelection>
       </Form>
+      <Submit
+        onClick={()=>{
+        if(formSelectedBicycle !== 'none'){
+          console.log(formSelectedBicycle);
+        }
+        }}
+      >Submit</Submit>
     </CompleteBikeSectionWrapper>
     )
   }
@@ -32,10 +43,31 @@ const CompleteBikeSection = () => {
         >Select your bicycle<VscTriangleUp /></DropdownSelection>
       {
         completeBicyclesDb.map(bike => {
-        return <DropdownSelection>{bike._id}</DropdownSelection>
+        return <DropdownSelection
+        onClick={() => setFormSelectedBicycle(bike)}
+        >{bike._id}</DropdownSelection>
         })
       }
       </Form>
+      <Submit
+        onClick={()=>{
+        if(formSelectedBicycle !== 'none'){
+          console.log(formSelectedBicycle);
+          fetch('/database/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              data: formSelectedBicycle,
+              user_id: currentUser.userInfo.athlete.id,
+              bicycle_id: selectedBicycle.name[0],
+            }),
+          })
+        }
+        }}
+        
+      >Submit</Submit>
     </CompleteBikeSectionWrapper>
   )
 }
@@ -52,10 +84,14 @@ const CompleteBikeSectionWrapper = styled.div`
 const Title = styled.p`
 `
 
-const Form = styled.form`
+const Form = styled.div`
 `
 
-const DropdownSelection = styled.div`
+const DropdownSelection = styled(UnstyledButton)`
+  background-color: coral;
+`
+
+const Submit = styled(UnstyledButton)`
   background-color: coral;
 `
 

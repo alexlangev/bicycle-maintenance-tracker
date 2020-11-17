@@ -7,7 +7,32 @@ import CustomBikeSection from './CustomBikeSection';
 const CreateBicycleForm = () => {
   const [isCompleteBike, setIsCompleteBike] = React.useState(null)
   console.log(isCompleteBike);
-  return (
+  if(isCompleteBike === null){
+    return(
+      <CreateBicycleFormWrapper>
+      <Title>Please enter your bicycle's information</Title>
+        <CompleteBike>
+          <input type="radio" id="complete" name="completeBicycle" value="complete" onClick={()=>setIsCompleteBike(true)}/>
+          <label for="complete">Complete Bicycle</label>
+          <input type="radio" id="custom" name="completeBicycle" value="custom"  onClick={()=>setIsCompleteBike(false)}/>
+          <label for="custom">Custom Bicycle</label>
+        </CompleteBike>
+    </CreateBicycleFormWrapper>
+    )
+  } else if(isCompleteBike === true){
+    return (
+      <CreateBicycleFormWrapper>
+        <Title>Please enter your bicycle's information</Title>
+          <CompleteBike>
+            <input type="radio" id="complete" name="completeBicycle" value="complete" onClick={()=>setIsCompleteBike(true)}/>
+            <label for="complete">Complete Bicycle</label>
+            <input type="radio" id="custom" name="completeBicycle" value="custom"  onClick={()=>setIsCompleteBike(false)}/>
+            <label for="custom">Custom Bicycle</label>
+          </CompleteBike>
+          <CompleteBikeSection />
+      </CreateBicycleFormWrapper>
+    )
+  } else return (
     <CreateBicycleFormWrapper>
       <Title>Please enter your bicycle's information</Title>
         <CompleteBike>
@@ -16,7 +41,7 @@ const CreateBicycleForm = () => {
           <input type="radio" id="custom" name="completeBicycle" value="custom"  onClick={()=>setIsCompleteBike(false)}/>
           <label for="custom">Custom Bicycle</label>
         </CompleteBike>
-        {isCompleteBike?<CompleteBikeSection />:<CustomBikeSection />}
+        <CustomBikeSection />
     </CreateBicycleFormWrapper>
   )
 }
