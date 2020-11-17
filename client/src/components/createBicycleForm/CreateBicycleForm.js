@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import CompleteBikeSection from './CompleteBikeSection';
+import CustomBikeSection from './CustomBikeSection';
+
 const CreateBicycleForm = () => {
   const [isCompleteBike, setIsCompleteBike] = React.useState(null)
   console.log(isCompleteBike);
@@ -14,7 +17,8 @@ const CreateBicycleForm = () => {
           <input type="radio" id="custom" name="completeBicycle" value="custom"  onClick={()=>setIsCompleteBike(false)}/>
           <label for="custom">Custom Bicycle</label>
         </CompleteBike>
-        {isCompleteBike?<p>true</p>:<p>false</p>}
+        
+        {isCompleteBike?<CompleteBikeSection />:<p>false</p>}
       </Form>
     </CreateBicycleFormWrapper>
   )

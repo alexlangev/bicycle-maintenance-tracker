@@ -8,7 +8,7 @@ import Sidebar from './components/Sidebar/SideBar';
 import BikeInfo from './components/BikeInfo/index';
 import LogInPage from './components/logIn/LogInPage';
 import WelcomePage from './components/WelcomePage';
-import CreateBicycleForm from './components/CreateBicycleForm';
+import CreateBicycleForm from './components/createBicycleForm/CreateBicycleForm';
 //Context imports
 import { IsLoggedInContext } from './Context/IsLoggedInContext';
 import { CurrentUserContext } from './Context/CurrentUserContext';
