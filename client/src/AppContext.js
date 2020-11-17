@@ -7,12 +7,14 @@ import { SelectedPartProvider } from './Context/SelectedPartContext';
 import { CurrentUserProvider } from './Context/CurrentUserContext';
 import { IsLoggedInProvider } from './Context/IsLoggedInContext';
 import { SelectedBicycleProvider } from './Context/SelectedBicycleContext';
+import { IsTrackedProvider } from './Context/IsTrackedContext';
 
   const AppContext = () => {
     return(
       <CurrentUserProvider>
       <IsLoggedInProvider>
       <SelectedBicycleProvider>
+      <IsTrackedProvider>
       <SelectedPartProvider>
       <ViewToggleProvider>
         
@@ -20,6 +22,7 @@ import { SelectedBicycleProvider } from './Context/SelectedBicycleContext';
 
       </ViewToggleProvider>
       </SelectedPartProvider>
+      </IsTrackedProvider>
       </SelectedBicycleProvider>
       </IsLoggedInProvider>
       </CurrentUserProvider>

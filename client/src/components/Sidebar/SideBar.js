@@ -8,21 +8,21 @@ import ViewToggle from './ViewToggle';
 
 import { CurrentUserContext } from '../../Context/CurrentUserContext';
 import { SelectedBicycleContext } from '../../Context/SelectedBicycleContext';
-
+import { IsTrackedContext } from '../../Context/IsTrackedContext';
 
 const Sidebar = () => {
   //subsribing to user context and creating an array of his bicycles
   const {currentUser, setCurrentUser} = React.useContext(CurrentUserContext);
   const bicycleList = Object.entries(currentUser.BikeData);
+  const userId = currentUser.userInfo.athlete.id;
 
   const {selectedBicycle, setSelectedBicycle} = React.useContext(SelectedBicycleContext);
+  const {isTracked, setIsTracked} = React.useContext(IsTrackedContext);
+
 
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [activeMenu, setActiveMenu] = useState('main');
-
-
-console.log(selectedBicycle);
-
+  
   return(
     <SidebarWrapper>
       <SidebarMenu 
@@ -58,14 +58,34 @@ console.log(selectedBicycle);
               </Button>
               {bicycleList.map(bike => {
                 return <Button 
-                onClick={() => setSelectedBicycle(bike)}
+                onClick={async () => {
+                  const tracking = await fetch(`/selectBike/${userId}/${bike[0]}`)
+                  const isTrackedRes = await tracking.json();
+
+                  if(isTrackedRes.tracked === true){
+                    //create bike?
+                    setIsTracked(true);
+///////////////////////// update tracked parts fetch???? and add them to setSelectedBicycle Context                    
+                    setSelectedBicycle({
+                      name:bike,
+                      parts:'temp value'
+                    })
+                    console.log('from sibebar selection', isTracked)
+                  } else if(isTrackedRes.tracked === false) {
+                    //show bike and update parts automaticaly
+                    setIsTracked(false);
+                    setSelectedBicycle({
+                      name:bike,
+                      parts: 'none',
+                    })
+                    console.log('from sibebar selection', isTracked)
+                  }
+                }}
                 >{bike[1].bikeData.name}</Button>
               })}
           </SelectBicycle> 
           </SecondaryMenu>
         </CSSTransition>
-
-
 
       </SidebarMenu>
       <CollapseButton onClick={() => setIsCollapsed(!isCollapsed)}>

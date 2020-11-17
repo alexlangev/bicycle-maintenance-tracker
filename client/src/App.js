@@ -7,9 +7,13 @@ import TopBar from './components/TopBar/TopBar';
 import Sidebar from './components/Sidebar/SideBar';
 import BikeInfo from './components/BikeInfo/index';
 import LogInPage from './components/logIn/LogInPage';
+import WelcomePage from './components/WelcomePage';
+import CreateBicycleForm from './components/CreateBicycleForm';
 //Context imports
 import { IsLoggedInContext } from './Context/IsLoggedInContext';
 import { CurrentUserContext } from './Context/CurrentUserContext';
+import { SelectedBicycleContext} from './Context/SelectedBicycleContext';
+import { IsTrackedContext } from './Context/IsTrackedContext';
 
 function App() {
     //State relating to loading
@@ -18,7 +22,8 @@ function App() {
     //Subscribing to the contexts
     const {currentUser, setCurrentUser} = React.useContext(CurrentUserContext)
     const {isLoggedIn, setIsLoggedIn} = React.useContext(IsLoggedInContext);
-
+    const {selectedBicycle, setSelectedBicycle} = React.useContext(SelectedBicycleContext);
+    const {isTracked, setIsTracked} = React.useContext(IsTrackedContext);
 
     //MAKE IT SO WHEN URL CHANGE???
     React.useEffect(()=>{
@@ -45,20 +50,49 @@ function App() {
   }
     },[])
 
-console.log("from app: ", loadingStatus, isLoggedIn, currentUser)
-
-  //useEffect fetch user info? LogIn something happens...
-
-  if (isLoggedIn === false && loadingStatus === 'loading'){
+  if (loadingStatus === 'loading'){
     return (
-
         <PageWrapper>
           Loading...
         </PageWrapper>
-
-
     )
-  } else if (isLoggedIn === true && loadingStatus === 'idle'){
+  } else if(isLoggedIn === true 
+    && loadingStatus === 'idle' 
+    && selectedBicycle.name === 'none'
+    && isTracked === false){
+    return (
+      <PageWrapper>
+        <GlobalStyle />
+        <TopBar/>
+
+        <ContentWrapper>    
+          <Sidebar />
+          <WelcomePage />
+        </ContentWrapper>
+
+      </PageWrapper>
+    )
+  } else if (isLoggedIn === true 
+    && loadingStatus === 'idle' 
+    && selectedBicycle.name !== 'none' 
+    && isTracked === false){
+    return (
+      <PageWrapper>
+        <GlobalStyle />
+        <TopBar/>
+
+        <ContentWrapper>    
+          <Sidebar />
+          <CreateBicycleForm />
+        </ContentWrapper>
+
+      </PageWrapper>
+    )
+  } else if (isLoggedIn === true 
+    && loadingStatus === 'idle' 
+    && selectedBicycle.name !== 'none' 
+    && selectedBicycle.parts !=='none' 
+    && isTracked === true){
     return (
       <PageWrapper>
         <GlobalStyle />

@@ -18,4 +18,4 @@ export const SelectedBicycleProvider = ({ children }) => {
       {children}
     </SelectedBicycleContext.Provider>
   )
-}
+}      
