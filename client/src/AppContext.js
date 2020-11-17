@@ -8,6 +8,8 @@ import { CurrentUserProvider } from './Context/CurrentUserContext';
 import { IsLoggedInProvider } from './Context/IsLoggedInContext';
 import { SelectedBicycleProvider } from './Context/SelectedBicycleContext';
 import { IsTrackedProvider } from './Context/IsTrackedContext';
+import { PartsDbProvider } from './Context/PartsDbContext';
+import { CompleteBicyclesDbProvider } from './Context/CompleteBicyclesDbContext';
 
   const AppContext = () => {
     return(
@@ -15,6 +17,8 @@ import { IsTrackedProvider } from './Context/IsTrackedContext';
       <IsLoggedInProvider>
       <SelectedBicycleProvider>
       <IsTrackedProvider>
+      <PartsDbProvider>
+      <CompleteBicyclesDbProvider>
       <SelectedPartProvider>
       <ViewToggleProvider>
         
@@ -22,6 +26,8 @@ import { IsTrackedProvider } from './Context/IsTrackedContext';
 
       </ViewToggleProvider>
       </SelectedPartProvider>
+      </CompleteBicyclesDbProvider>
+      </PartsDbProvider>
       </IsTrackedProvider>
       </SelectedBicycleProvider>
       </IsLoggedInProvider>

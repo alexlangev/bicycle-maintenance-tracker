@@ -2,20 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { VscTriangleDown, VscTriangleUp} from "react-icons/vsc";
+import { CompleteBicyclesDbContext } from '../../Context/CompleteBicyclesDbContext';
 
 
 const CompleteBikeSection = () => {
 
   const [isCollapsed, setIsCollapsed] = React.useState(true);
 
+  const {completeBicyclesDb, setcompleteBicyclesDb} = React.useContext(CompleteBicyclesDbContext);
+
+  console.log(completeBicyclesDb, completeBicyclesDb[0]);
 
   if (isCollapsed === true) {
     return(
       <CompleteBikeSectionWrapper>
       <Form>
-        <dropdownSelection
+        <DropdownSelection
           onClick={() => setIsCollapsed(!isCollapsed)}
-        >Select your bicycle<VscTriangleDown /></dropdownSelection>
+        >Select your bicycle<VscTriangleDown /></DropdownSelection>
       </Form>
     </CompleteBikeSectionWrapper>
     )
@@ -26,9 +30,11 @@ const CompleteBikeSection = () => {
         <DropdownSelection
           onClick={() => setIsCollapsed(!isCollapsed)}
         >Select your bicycle<VscTriangleUp /></DropdownSelection>
-        <p>test1</p>
-        <p>test1</p>
-        <p>test1</p>
+      {
+        completeBicyclesDb.map(bike => {
+        return <DropdownSelection>{bike._id}</DropdownSelection>
+        })
+      }
       </Form>
     </CompleteBikeSectionWrapper>
   )

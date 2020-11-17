@@ -2,19 +2,32 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { VscTriangleRight, VscTriangleUp} from "react-icons/vsc";
+import { PartsDbContext } from '../../Context/PartsDbContext';
 
 
 const CustomBikeSection = () => {
-
   const [chainIsCollapsed, setChainIsCollapsed] = React.useState(true);
+
+  const {partsDb, setPartsDb} = React.useContext(PartsDbContext);
+
+  console.log(partsDb.chains);
+  //importing bike part database
 
     return (
     <CustomBikeSectionWrapper>
       <Form>
+
+        {/* Chains */}
         <DropdownPrompt
-          onClick={()=>setChainIsCollapsed(!chainIsCollapsed)}
-        >chain<VscTriangleRight/></DropdownPrompt>
-        {chainIsCollapsed?<p>test</p>:<div/>}
+          onClick={()=>{setChainIsCollapsed(!chainIsCollapsed)}}
+        >chain<VscTriangleRight/>
+        </DropdownPrompt>
+
+        {!chainIsCollapsed
+          ?partsDb.chains.map(chain =>{
+            return <DropdownSelection>{chain[0]}</DropdownSelection>
+          })
+          :<div>collapsed</div>}
 
       </Form>
     </CustomBikeSectionWrapper>
@@ -41,6 +54,8 @@ const DropdownPrompt = styled.div`
 
 const DropdownSelection = styled.div`
   background-color: coral;
+  width: 100%;
+  height: 20pt;
 `
 
 export default CustomBikeSection

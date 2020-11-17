@@ -16,6 +16,7 @@ const handleGetParts = require('./handlers/handleGetParts');
 const handleGetUserData = require('./handlers/handleGetUserData');
 const handleUpdateUser = require('./handlers/handleUpdateUser');
 const handleSelectBike = require('./handlers/handleSelectBike');
+const handleGetCompleteBicycles = require('./handlers/handleGetCompleteBicycles');
 
 express()
   .use(morgan('tiny'))
@@ -28,7 +29,7 @@ express()
   .get('/getUserData', handleGetUserData) //from strava
   .post('/updateUser', handleUpdateUser) //to mongo need body {"_id": "","bicycleData" : "","activities": ""}
   .get('/selectBike/:_id/:_gear_id', handleSelectBike)
-
-///////////////// Not used yet /////////////////////////////
+  .get('/database/completeBicycles', handleGetCompleteBicycles)
   .get('/database/parts', handleGetParts) //from mongo
+
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));

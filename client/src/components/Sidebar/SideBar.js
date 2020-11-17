@@ -53,9 +53,7 @@ const Sidebar = () => {
         >
           <SecondaryMenu>
           <SelectBicycle>
-              <Button onClick={() => setActiveMenu('main')}>
-                <p><VscTriangleRight/></p>
-              </Button>
+              <Button onClick={() => setActiveMenu('main')}><p><VscTriangleRight/></p></Button>
               {bicycleList.map(bike => {
                 return <Button 
                 onClick={async () => {

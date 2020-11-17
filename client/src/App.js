@@ -14,6 +14,8 @@ import { IsLoggedInContext } from './Context/IsLoggedInContext';
 import { CurrentUserContext } from './Context/CurrentUserContext';
 import { SelectedBicycleContext} from './Context/SelectedBicycleContext';
 import { IsTrackedContext } from './Context/IsTrackedContext';
+import { PartsDbContext } from './Context/PartsDbContext'
+import { CompleteBicyclesDbContext } from './Context/CompleteBicyclesDbContext';
 
 function App() {
     //State relating to loading
@@ -24,6 +26,8 @@ function App() {
     const {isLoggedIn, setIsLoggedIn} = React.useContext(IsLoggedInContext);
     const {selectedBicycle, setSelectedBicycle} = React.useContext(SelectedBicycleContext);
     const {isTracked, setIsTracked} = React.useContext(IsTrackedContext);
+    const {partsDb, setPartsDb} = React.useContext(PartsDbContext);
+    const {completeBicyclesDb, setCompleteBicyclesDb} = React.useContext(CompleteBicyclesDbContext);
 
     //MAKE IT SO WHEN URL CHANGE???
     React.useEffect(()=>{
@@ -47,9 +51,56 @@ function App() {
       }
     }
     getUserInfo();
-  }
-    },[])
+    }
+    
+    //This function fetches the parts database, filters it per part type and sets it as context
+    const getPartsDb = async () => {
+      let chains = [];
+      let chainrings = [];
+      let tires = [];
+      let cassettes = [];
 
+      const partsDBResponse = await fetch('/database/parts')
+      const partsDB = await partsDBResponse.json();
+      const parts = partsDB.parts;
+  
+      Object.entries(parts).map(part => {
+        const name = part[1]._id;
+        if(name.includes('cn')){
+          chains.push(part);
+        } else if(name.includes('cs')){
+          cassettes.push(part);
+        } else if(name.includes('cr')){
+          chainrings.push(part);
+        } else if(name.includes('tr')){
+          tires.push(part);
+        }
+      })
+      setPartsDb({
+        chains,
+        chainrings,
+        tires,
+        cassettes,
+      })
+    }
+    getPartsDb();
+
+
+
+
+    //This function fetches the complete bicycles database and sets it as context
+    const getBicyclesDb = async () => {
+      const bicyclesDbResponse = await fetch('/database/completeBicycles')
+      const bicyclesDB = await bicyclesDbResponse.json();
+  
+      setCompleteBicyclesDb(bicyclesDB.bikes);
+    }
+    getBicyclesDb();
+
+
+    
+    },[])
+    console.log(completeBicyclesDb);
   if (loadingStatus === 'loading'){
     return (
         <PageWrapper>
