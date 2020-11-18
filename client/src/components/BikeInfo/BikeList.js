@@ -4,9 +4,9 @@ import UnstyledButton from '../UnstyledButton';
 //Context for the selection of parts
 import { SelectedPartContext } from '../../Context/SelectedPartContext';
 
-const BikeList = (props) => {
+const BikeList = ({wearArray, chainWear, cassetteWear, chainringWear, rearTireWear, frontTireWear}) => {
   const {selectedPart, setSelectedPart} = React.useContext(SelectedPartContext);
-  const wearArray = props.wearArray;
+
   return (
     <BikeListWrapper>
       <Header>Parts:</Header>

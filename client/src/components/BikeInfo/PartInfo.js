@@ -5,13 +5,10 @@ import styled from 'styled-components';
 import { SelectedPartContext } from '../../Context/SelectedPartContext';
 import UnstyledButton from '../UnstyledButton';
 
-const PartInfo = (props) => {
+const PartInfo = ({wearArray, chainWear, cassetteWear, chainringWear, rearTireWear, frontTireWear}) => {
   const {selectedPart, setSelectedPart} = React.useContext(SelectedPartContext);
-  const wearArray=props.wearArray;
 
-  console.log(wearArray);
-
-  if(selectedPart !== 'none') {
+    if(selectedPart !== 'none') {
     return (
       <PartInfoWrapper>
         <PartName>{selectedPart}</PartName>
