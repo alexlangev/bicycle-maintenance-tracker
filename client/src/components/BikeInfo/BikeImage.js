@@ -48,14 +48,14 @@ const BikeImage = () => {
 }
 
 const BikeImageWrapper = styled.div`
+  padding:2%;
   display: flex;
   flex-direction:column;
   justify-content: center;
   align-items: center;
   width: 75%;
   height: auto;
-  filter: grayscale(100%);
-  border: 1px solid green;
+  filter: brightness(0%);
 `
 
 const CompleteBikeWrapper = styled.div`

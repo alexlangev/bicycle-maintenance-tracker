@@ -67,6 +67,8 @@ const LogInAnchor = styled.a`
   padding: 5pt;
   text-decoration: none;
   color: black;
+  text-shadow: 1px 1px 2px #000000;
+
   &:visited{
     color: black;
   }
@@ -80,12 +82,13 @@ const Box = styled.div`
   padding-top: 35pt;
 
   color:#cccaca;
-  text-shadow: 1px 1px 4px #000000;
+  text-shadow: 1px 1px 2px #000000;
 `
 
 const LogInBox = styled.div`
   width: 35%;
-  min-width: 600px;
+  min-width: 650px;
+  min-height: 400px;
   height: 60vh;
   display: flex;
   flex-direction: column;

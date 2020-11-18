@@ -8,7 +8,7 @@ const BikeList = () => {
   const {selectedPart, setSelectedPart} = React.useContext(SelectedPartContext);
   return (
     <BikeListWrapper>
-      <Header>Bicycle Parts:</Header>
+      <Header>Parts:</Header>
       <PartList>
         <PartWrapper>
           <Part onClick={() => setSelectedPart('frontTire')}>Front Tire</Part>
@@ -23,7 +23,7 @@ const BikeList = () => {
         </PartWrapper>      
         
         <PartWrapper>
-        <Part onClick={() => setSelectedPart('cassette')}>Cassette</Part>
+          <Part onClick={() => setSelectedPart('cassette')}>Cassette</Part>
         </PartWrapper>  
 
         <PartWrapper>
@@ -42,22 +42,30 @@ const BikeListWrapper = styled.div`
   padding: 5vh;
 `
 
-const Header = styled.h2` 
+const Header = styled.h2`
+  padding-bottom: 16pt;
+  font-size: 24pt;
+  color:#17242c;
+  text-shadow: 1px 1px 0px #000000;
 `
 
 const PartList = styled.ul`
 `
 
 const PartWrapper = styled.li`
-  border-bottom: 1px grey dotted;
+  margin-bottom: 8pt;
+  border-bottom: 1px black dotted;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 `
 
 const Part = styled(UnstyledButton)`
-  color: white;
-  font-size: x-large;
+  color: black;
+  font-size: 18pt;
+  &:hover {
+    font-weight:bolder;
+  }
 `
 
 export default BikeList;

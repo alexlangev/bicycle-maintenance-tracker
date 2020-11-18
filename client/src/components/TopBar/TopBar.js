@@ -44,6 +44,7 @@ const Welcome = styled.p`
 `
 
 const SignOutButton = styled(UnstyledButton)`
+  font-weight: bold;
   background-color: orangered;
   color: #17242c;
   padding: 3pt 15pt;

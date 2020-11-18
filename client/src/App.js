@@ -175,7 +175,7 @@ const PageWrapper = styled.div`
 `
 
 const ContentWrapper = styled.div`
-  background-color: #4BB2F9;
+  background-color: #6b99b5;
   height: 95vh;
   width: 100%;
   display: flex;
