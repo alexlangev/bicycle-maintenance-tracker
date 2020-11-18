@@ -12,11 +12,11 @@ import { IsTrackedContext } from '../../Context/IsTrackedContext';
 
 const Sidebar = () => {
   //subsribing to user context and creating an array of his bicycles
-  const {currentUser, setCurrentUser} = React.useContext(CurrentUserContext);
+  const {currentUser} = React.useContext(CurrentUserContext);
   const bicycleList = Object.entries(currentUser.BikeData);
   const userId = currentUser.userInfo.athlete.id;
 
-  const {selectedBicycle, setSelectedBicycle} = React.useContext(SelectedBicycleContext);
+  const {setSelectedBicycle} = React.useContext(SelectedBicycleContext);
   const {isTracked, setIsTracked} = React.useContext(IsTrackedContext);
 
 
@@ -63,12 +63,12 @@ const Sidebar = () => {
                   if(isTrackedRes.tracked === true){
                     //create bike?
                     setIsTracked(true);
+                    setActiveMenu('main');
 ///////////////////////// update tracked parts fetch???? and add them to setSelectedBicycle Context                    
                     setSelectedBicycle({
                       name:bike,
                       parts:'temp value'
                     })
-                    console.log('from sibebar selection', isTracked)
                   } else if(isTrackedRes.tracked === false) {
                     //show bike and update parts automaticaly
                     setIsTracked(false);
@@ -98,6 +98,7 @@ const SidebarWrapper = styled.div`
   flex-direction: row;
   /* width property is inline for conditionnal purpose*/
   height: 100%;
+  border: solid 1px black;
 `
 
 const SidebarMenu = styled.div`
@@ -106,6 +107,7 @@ const SidebarMenu = styled.div`
   background-color: #dbdbdb;
   display: flex;
   flex-direction: column;
+  border-right: solid 1px black;
 `
 
 const MainMenu = styled.div`
@@ -120,7 +122,8 @@ const SecondaryMenu = styled.div`
   width:275pt;
   height: 100%;
   overflow: hidden;
-  background-color: orange;
+  background-color: #dbdbdb;
+  border-right: solid 1px black;
 `
 
 const SelectBicycle = styled.div`

@@ -5,12 +5,38 @@ import PartInfo from './PartInfo';
 import BikeList from './BikeList';
 
 import { ViewToggleContext } from '../../Context/ViewToggleContext';
-import { SelectedBicycleContext } from '../../Context/SelectedBicycleContext';
+
+
 
 const BikeInfo = (props) => {
-  const {selectedBicycle, setSelectedBicycle} = React.useContext(SelectedBicycleContext);
   const {viewToggle} = React.useContext(ViewToggleContext);
+  const currentUser = props.currentUser;
+  const selectedBicycle = props.selectedBicycle;
 
+  //want to calculate the KMs on each parts, compare it to it's theoretical lifespan and give back that info on the app.
+  const bikeId = selectedBicycle.name[0];
+  const query = `tracking_${bikeId}`
+  const bikePartsData = Object.values(currentUser.athlete[query]);
+
+  //we iterate through each part and measure what we want
+  let rides = [];
+  currentUser.userActivities.activities.map(ride => {
+    if(ride.gear_id === bikeId){
+      rides.push(ride);
+    }
+  });
+  let wearArray = [];
+
+  bikePartsData.map((part)=> {
+  const firstRideIndex = rides.length - part.numRides;
+  let partm = 0;
+  
+  for(let i=0; i<= firstRideIndex; i++){
+    partm = partm + rides[i].distance;
+  }
+  let obj = {part:part,partm:partm}
+  wearArray.push(obj);
+  })
 
   if(selectedBicycle.name === 'none'){
     return(
@@ -21,8 +47,8 @@ const BikeInfo = (props) => {
   } else {
     return (
       <BikeInfoWrapper>
-        {viewToggle === 'image'?<BikeImage />:<BikeList />}
-        <PartInfo />
+        {viewToggle === 'image'?<BikeImage wearArray={wearArray} />:<BikeList wearArray={wearArray} />}
+        <PartInfo wearArray={wearArray} />
       </BikeInfoWrapper>
     )
   }

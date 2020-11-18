@@ -9,8 +9,9 @@ const greenPart = '#3f992b';
 const yellowPart = '#b3a836';
 const redPart = '#ab2b1a';
 
-const BikeImage = () => {
+const BikeImage = (props) => {
   const {selectedPart, setSelectedPart} = React.useContext(SelectedPartContext);
+  const wearArray = props.wearArray;
   return (
     <BikeImageWrapper>
       <CompleteBikeWrapper>

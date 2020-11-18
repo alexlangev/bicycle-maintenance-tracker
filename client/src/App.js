@@ -52,6 +52,7 @@ function App() {
     }
     getUserInfo();
     }
+
     
     //This function fetches the parts database, filters it per part type and sets it as context
     const getPartsDb = async () => {
@@ -85,9 +86,6 @@ function App() {
     }
     getPartsDb();
 
-
-
-
     //This function fetches the complete bicycles database and sets it as context
     const getBicyclesDb = async () => {
       const bicyclesDbResponse = await fetch('/database/completeBicycles')
@@ -96,11 +94,8 @@ function App() {
       setCompleteBicyclesDb(bicyclesDB.bikes);
     }
     getBicyclesDb();
-
-
-    
     },[])
-    console.log(completeBicyclesDb);
+
   if (loadingStatus === 'loading'){
     return (
         <PageWrapper>
@@ -151,7 +146,10 @@ function App() {
 
         <ContentWrapper>    
           <Sidebar />
-          <BikeInfo />
+          <BikeInfo
+            currentUser={currentUser}
+            selectedBicycle={selectedBicycle}
+          />
         </ContentWrapper>
 
       </PageWrapper>

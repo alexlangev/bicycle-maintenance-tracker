@@ -20,13 +20,6 @@ const handleSelectBike = async (req, res) => {
   //Setting up the client and query
   const client = await MongoClient(MONGO_URI, options);
   //For the mongo upsert method
-  
-  // const update = {$set:{
-  //   _id: _id,
-  //   BikeData: BikeData,
-  //   userActivities: userActivities,
-  // }
-  // };
 
   try {
     const query = { '_id': _id };

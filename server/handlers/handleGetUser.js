@@ -4,6 +4,16 @@ const handleGetActivities = require('./handleGetActivities');
 const handleGetUserData = require('./handleGetUserData');
 const handleUpdateUser = require('./handleUpdateUser');
 
+//MongoDB stuff
+require('dotenv').config({path: '../.env'});
+const { MongoClient } = require('mongodb');
+const assert = require('assert');
+const { MONGO_URI } = process.env;
+const options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+};
+
 const handleGetUser = async (req, res) => {
   //client Id and client secret of the developper and the authorization from the new user
   const CLIENT_ID = process.env.CLIENT_ID;
@@ -30,12 +40,25 @@ const handleGetUser = async (req, res) => {
     //With all that information we can create/update user in DB
 
     const updateUserResponse = await handleUpdateUser(userInfo,BikeData,userActivities);
-    
+
+    //verifies if the user ha tracked bicycles ////////////////////////////////////////
+
+    const _id = parseInt(userInfo.athlete.id);
+    //Setting up the client and query
+    const client = await MongoClient(MONGO_URI, options);
+    //For the mongo upsert method
+      const query = { '_id': _id };  
+      await client.connect();
+      const db = client.db('MyApp');
+      const athlete = await db.collection('athletes').findOne(query);
+  
+
     res.status(200).json({
       userInfo,
       userActivities,
       BikeData,
       updateUserResponse,
+      athlete
     });
 
   } catch (err) {

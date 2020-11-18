@@ -5,9 +5,11 @@ import styled from 'styled-components';
 import { SelectedPartContext } from '../../Context/SelectedPartContext';
 import UnstyledButton from '../UnstyledButton';
 
-const PartInfo = () => {
+const PartInfo = (props) => {
   const {selectedPart, setSelectedPart} = React.useContext(SelectedPartContext);
+  const wearArray=props.wearArray;
 
+  console.log(wearArray);
 
   if(selectedPart !== 'none') {
     return (
