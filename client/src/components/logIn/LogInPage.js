@@ -11,11 +11,11 @@ const LogInPage = () => {
     <PageWrapper>
       <LogInBox>
 
-        <Title>{'Bicycle Maintenance App'}</Title>
+        <Title>{'Bicycle Maintenance Tracker'}</Title>
 
       <div>
         <Box>
-          <Welcome>Please create a Strava account</Welcome>
+          <Welcome>Please create a <strong>Strava</strong> account</Welcome>
           <LogIn>
             <LogInAnchor href= {registerUrl}>Register</LogInAnchor>
           </LogIn>
@@ -86,7 +86,7 @@ const Box = styled.div`
 
 const LogInBox = styled.div`
   width: 35%;
-  min-width: 650px;
+  min-width: 736px;
   min-height: 400px;
   height: 60vh;
   display: flex;

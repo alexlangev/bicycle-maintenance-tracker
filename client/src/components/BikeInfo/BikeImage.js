@@ -12,35 +12,50 @@ const redPart = '#ab2b1a';
 const BikeImage = ({wearArray, chainWear, cassetteWear, chainringWear, rearTireWear, frontTireWear}) => {
   const {selectedPart, setSelectedPart} = React.useContext(SelectedPartContext);
 
+  //Nested ternaries are hard to read. Figure out another way to execute the conditionnal rendering!
   return (
     <BikeImageWrapper>
       <CompleteBikeWrapper>
-        <CompleteBike src='images/complete.png'/>
+        <CompleteBike style={{filter: "brightness(0%)"}} src='images/complete.png'/>
           {/* Parts are display:none unless they are selected with context */}
         <PartsWrapper>
-
-          <RearTireButton onClick={() => {setSelectedPart('rearTire'); console.log('rearTire')}}>
-            <RearTire src='/images/tire.png'/>
+        
+          <RearTireButton onClick={() => {setSelectedPart('rearTire')}}>
+            {rearTireWear < 50? <RearTire src='/images/tire_green.png'/> 
+                                :(rearTireWear < 90)
+                                  ? <RearTire src='/images/tire_yellow.png'/> 
+                                  :<RearTire src='/images/tire_red.png'/> }
           </RearTireButton>
 
 
           <FrontTireButton onClick={() => setSelectedPart('frontTire')}>
-            <FrontTire src='/images/tire.png'/>
+            {frontTireWear < 50? <FrontTire src='/images/tire_green.png'/> 
+                                  :(frontTireWear < 90)
+                                    ? <FrontTire src='/images/tire_yellow.png'/> 
+                                    :<FrontTire src='/images/tire_red.png'/> }
           </FrontTireButton>
 
 
-          <ChainButton onClick={() => {setSelectedPart('chain');console.log('chain')}}>
-            <Chain src='/images/chain.png'/>
+          <ChainButton onClick={() => {setSelectedPart('chain')}}>
+          {chainWear < 50? <Chain src='/images/chain_green.png'/> 
+                                  :(chainWear < 90)
+                                    ? <Chain src='/images/chain_yellow.png'/> 
+                                    :<Chain src='/images/chain_red.png'/> }
           </ChainButton>
 
           <ChainringsButton onClick={() => setSelectedPart('chainrings')}>
-            <Chainrings src='/images/chainrings.png'/>
+          {chainringWear < 50? <Chainrings src='/images/chainrings_green.png'/> 
+                                  :(chainringWear < 90)
+                                    ? <Chainrings src='/images/chainrings_yellow.png'/> 
+                                    :<Chainrings src='/images/chainrings_red.png'/> }
           </ChainringsButton>
 
 
           <CasetteButton onClick={() => setSelectedPart('cassette')}>
-            <Casette src='/images/cassette.png'/>
-          </CasetteButton>
+          {cassetteWear < 50? <Casette src='/images/cassette_green.png'/> 
+                                  :(cassetteWear < 90)
+                                    ? <Casette src='/images/cassette_yellow.png'/> 
+                                    :<Casette src='/images/cassette_red.png'/> }          </CasetteButton>
 
         </PartsWrapper>
       </CompleteBikeWrapper>
@@ -56,7 +71,6 @@ const BikeImageWrapper = styled.div`
   align-items: center;
   width: 75%;
   height: auto;
-  filter: brightness(0%);
 `
 
 const CompleteBikeWrapper = styled.div`
@@ -83,7 +97,7 @@ const RearTire = styled.img`
 const RearTireButton = styled(UnstyledButton)`
   z-index: 1;
   width: 41%;
-  transform: translate(0%,-100.5%);
+  transform: translate(-0.5%,-100%);
   opacity: 100%;
 `
 
@@ -120,14 +134,14 @@ const Chainrings = styled.img`
 const ChainringsButton = styled(UnstyledButton)`
   z-index: 2;
   width: 12.5%;
-  transform: translate(18%,-523%);
+  transform: translate(18%,-520%);
   opacity: 100%;
 `
 
 const CasetteButton = styled(UnstyledButton)`
   z-index: 4;
   width: 6.5%;
-  transform: translate(-490%,-1058%);
+  transform: translate(-489%,-1050%);
   opacity: 100%;
 `
 
