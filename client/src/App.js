@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {keyframes } from 'styled-components';
 
 // import LogInForm from './components/logIn/LogInForm';
 import GlobalStyle from './GlobalStyle';
@@ -99,7 +99,10 @@ function App() {
   if (loadingStatus === 'loading'){
     return (
         <PageWrapper>
-          Loading...
+          <LoaderWrapper>
+          <p style={{position: "relative", top:"25pt"}}>Loading...</p>
+          <Loader src='/images/loader.png'/>
+          </LoaderWrapper>
         </PageWrapper>
     )
   } else if(isLoggedIn === true 
@@ -163,6 +166,29 @@ function App() {
     )
   }
 }
+
+const animation = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`
+
+const LoaderWrapper = styled.div`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const Loader = styled.img`
+  /* border: 25px solid #f3f3f3;  */
+  /* border-top: 25px solid orangered;  */
+  /* border-radius: 50%; */
+  width: 200px;
+  height: 200px;
+  animation: ${animation} 2.5s linear infinite;
+  position: absolute;
+`
 
 const PageWrapper = styled.div`
   height: 100%;

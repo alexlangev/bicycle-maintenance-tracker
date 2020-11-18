@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { VscTriangleRight, VscTriangleUp} from "react-icons/vsc";
+import { VscTriangleDown, VscTriangleUp} from "react-icons/vsc";
 import { PartsDbContext } from '../../Context/PartsDbContext';
 import {SelectedBicycleContext} from '../../Context/SelectedBicycleContext';
 import {CurrentUserContext} from '../../Context/CurrentUserContext';
@@ -28,12 +28,12 @@ const CustomBikeSection = () => {
     return (
     <CustomBikeSectionWrapper>
       <Form>
-
+      <DropWrapper>
         {/* Chains */}
-        <DropdownPrompt
-          onClick={()=>{setChainIsCollapsed(!chainIsCollapsed)}}
-        >chain<VscTriangleRight/>
-        </DropdownPrompt>
+        {chainIsCollapsed
+        ?<DropdownPrompt onClick={()=>{setChainIsCollapsed(!chainIsCollapsed)}}>Chain<VscTriangleDown/></DropdownPrompt>
+        :<DropdownPrompt onClick={()=>{setChainIsCollapsed(!chainIsCollapsed)}}>Chain<VscTriangleUp/></DropdownPrompt>
+        }
 
         {!chainIsCollapsed
           ?partsDb.chains.map(chain =>{
@@ -42,12 +42,14 @@ const CustomBikeSection = () => {
             >{chain[0]}</DropdownSelection>
           })
           :<div></div>}
+      </DropWrapper>
 
         {/* Cassettes */}
-        <DropdownPrompt
-          onClick={()=>{setCassetteIsCollapsed(!cassetteIsCollapsed)}}
-        >cassette<VscTriangleRight/>
-        </DropdownPrompt>
+      <DropWrapper>
+      {cassetteIsCollapsed
+        ?<DropdownPrompt onClick={()=>{setCassetteIsCollapsed(!cassetteIsCollapsed)}}>Cassette<VscTriangleDown/></DropdownPrompt>
+        :<DropdownPrompt onClick={()=>{setCassetteIsCollapsed(!cassetteIsCollapsed)}}>Cassette<VscTriangleUp/></DropdownPrompt>
+        }
 
         {!cassetteIsCollapsed
           ?partsDb.cassettes.map(cassette =>{
@@ -56,12 +58,14 @@ const CustomBikeSection = () => {
             >{cassette[0]}</DropdownSelection>
           })
           :<div></div>}
+      </DropWrapper>
 
           {/* front Tires */}
-        <DropdownPrompt
-          onClick={()=>{setFrontTiresIsCollapsed(!frontTiresIsCollapsed)}}
-        >front tire<VscTriangleRight/>
-        </DropdownPrompt>
+      <DropWrapper>
+      {frontTiresIsCollapsed
+        ?<DropdownPrompt onClick={()=>{setFrontTiresIsCollapsed(!frontTiresIsCollapsed)}}>Front Tire<VscTriangleDown/></DropdownPrompt>
+        :<DropdownPrompt onClick={()=>{setFrontTiresIsCollapsed(!frontTiresIsCollapsed)}}>Front Tire<VscTriangleUp/></DropdownPrompt>
+        }
 
         {!frontTiresIsCollapsed
           ?partsDb.tires.map(tire =>{
@@ -70,12 +74,14 @@ const CustomBikeSection = () => {
             >{tire[0]}</DropdownSelection>
           })
           :<div></div>}
+        </DropWrapper>
 
         {/* rear Tires */}
-        <DropdownPrompt
-          onClick={()=>{setRearTiresIsCollapsed(!rearTiresIsCollapsed)}}
-        >rear tire<VscTriangleRight/>
-        </DropdownPrompt>
+      <DropWrapper>
+      {rearTiresIsCollapsed
+        ?<DropdownPrompt onClick={()=>{setRearTiresIsCollapsed(!rearTiresIsCollapsed)}}>Rear Tire<VscTriangleDown/></DropdownPrompt>
+        :<DropdownPrompt onClick={()=>{setRearTiresIsCollapsed(!rearTiresIsCollapsed)}}>Rear Tire<VscTriangleUp/></DropdownPrompt>
+        }
 
         {!rearTiresIsCollapsed
           ?partsDb.tires.map(tire =>{
@@ -84,12 +90,14 @@ const CustomBikeSection = () => {
             >{tire[0]}</DropdownSelection>
           })
           :<div></div>}
-
+      </DropWrapper>
         {/* Chainrings */}
-        <DropdownPrompt
-          onClick={()=>{setChainringsIsCollapsed(!chainringsIsCollapsed)}}
-        >chainrings<VscTriangleRight/>
-        </DropdownPrompt>
+      <DropWrapper>
+      {chainringsIsCollapsed
+        ?<DropdownPrompt onClick={()=>{setChainringsIsCollapsed(!chainringsIsCollapsed)}}>Chainrings<VscTriangleDown/></DropdownPrompt>
+        :<DropdownPrompt onClick={()=>{setChainringsIsCollapsed(!chainringsIsCollapsed)}}>Chainrings<VscTriangleUp/></DropdownPrompt>
+        }
+
 
         {!chainringsIsCollapsed
           ?partsDb.chainrings.map(chainring =>{
@@ -98,7 +106,7 @@ const CustomBikeSection = () => {
             >{chainring[0]}</DropdownSelection>
           })
           :<div></div>}
-
+      </DropWrapper>
       </Form>
       <Submit
         onClick={()=>{
@@ -140,21 +148,55 @@ const CustomBikeSectionWrapper = styled.div`
 
 const Form = styled.form`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  height:22vh;
 `
 
 const DropdownPrompt = styled.div`
-  background-color: coral;
+  border: 1px black solid;
+  background-color: #dbdbdb;
+  width: 135pt;
+  height: 15pt;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  &:hover{
+    filter:brightness(70%);
+  }
 `
 
-const DropdownSelection = styled.div`
-  background-color: coral;
-  width: 100%;
-  height: 20pt;
+const DropdownSelection = styled(UnstyledButton)`
+  border: 1px black solid;
+  background-color: #dbdbdb;
+  width: 135pt;
+  height: 15pt;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  &:hover{
+    filter:brightness(70%);
+  }
+`
+
+const DropWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 3pt;
 `
 
 const Submit = styled(UnstyledButton)`
+  background-color:#ff4500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:13pt;
+  border-radius:10px;
+  border: 1px black solid;
+  margin-top: 10pt;
   background-color: coral;
+  width: 65pt;
 `
 
 export default CustomBikeSection
