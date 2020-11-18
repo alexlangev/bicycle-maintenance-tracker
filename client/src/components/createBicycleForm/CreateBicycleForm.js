@@ -10,36 +10,36 @@ const CreateBicycleForm = () => {
   if(isCompleteBike === null){
     return(
       <CreateBicycleFormWrapper>
-      <Title>Please enter your bicycle's information</Title>
+      <Title>Enter your bicycle's information</Title>
         <CompleteBike>
-          <input type="radio" id="complete" name="completeBicycle" value="complete" onClick={()=>setIsCompleteBike(true)}/>
-          <label for="complete">Complete Bicycle</label>
-          <input type="radio" id="custom" name="completeBicycle" value="custom"  onClick={()=>setIsCompleteBike(false)}/>
-          <label for="custom">Custom Bicycle</label>
+          <Radio type="radio" id="complete" name="completeBicycle" value="complete" onClick={()=>setIsCompleteBike(true)}/>
+          <Label for="complete">Complete Bicycle</Label>
+          <Radio type="radio" id="custom" name="completeBicycle" value="custom"  onClick={()=>setIsCompleteBike(false)}/>
+          <Label for="custom">Custom Bicycle</Label>
         </CompleteBike>
     </CreateBicycleFormWrapper>
     )
   } else if(isCompleteBike === true){
     return (
       <CreateBicycleFormWrapper>
-        <Title>Please enter your bicycle's information</Title>
+        <Title>Enter your bicycle's information</Title>
           <CompleteBike>
-            <input type="radio" id="complete" name="completeBicycle" value="complete" onClick={()=>setIsCompleteBike(true)}/>
-            <label for="complete">Complete Bicycle</label>
-            <input type="radio" id="custom" name="completeBicycle" value="custom"  onClick={()=>setIsCompleteBike(false)}/>
-            <label for="custom">Custom Bicycle</label>
+            <Radio type="radio" id="complete" name="completeBicycle" value="complete" onClick={()=>setIsCompleteBike(true)}/>
+            <Label for="complete">Complete Bicycle</Label>
+            <Radio type="radio" id="custom" name="completeBicycle" value="custom"  onClick={()=>setIsCompleteBike(false)}/>
+            <Label for="custom">Custom Bicycle</Label>
           </CompleteBike>
           <CompleteBikeSection />
       </CreateBicycleFormWrapper>
     )
   } else return (
     <CreateBicycleFormWrapper>
-      <Title>Please enter your bicycle's information</Title>
+      <Title>Enter your bicycle's information</Title>
         <CompleteBike>
-          <input type="radio" id="complete" name="completeBicycle" value="complete" onClick={()=>setIsCompleteBike(true)}/>
-          <label for="complete">Complete Bicycle</label>
-          <input type="radio" id="custom" name="completeBicycle" value="custom"  onClick={()=>setIsCompleteBike(false)}/>
-          <label for="custom">Custom Bicycle</label>
+          <Radio type="radio" id="complete" name="completeBicycle" value="complete" onClick={()=>setIsCompleteBike(true)}/>
+          <Label for="complete">Complete Bicycle</Label>
+          <Radio type="radio" id="custom" name="completeBicycle" value="custom"  onClick={()=>setIsCompleteBike(false)}/>
+          <Label for="custom">Custom Bicycle</Label>
         </CompleteBike>
         <CustomBikeSection />
     </CreateBicycleFormWrapper>
@@ -47,7 +47,7 @@ const CreateBicycleForm = () => {
 }
 
 const CreateBicycleFormWrapper = styled.div`
-  margin: auto;
+  padding: 10pt;
   height: 100%;
   width: 100%;
   display: flex;
@@ -55,11 +55,20 @@ const CreateBicycleFormWrapper = styled.div`
   align-items: flex-start;
 `
 
+const Radio = styled.input`
+`
+
+const Label = styled.label`
+  font-size: 14pt;
+  margin-right: 6pt;
+`
+
 const Title = styled.h2`
+  font-size:18pt;
 `
 
 const CompleteBike = styled.div`
-
+  margin-top: 5pt;
 `
 
 export default CreateBicycleForm;

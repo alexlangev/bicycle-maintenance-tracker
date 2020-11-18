@@ -53,7 +53,7 @@ const Sidebar = () => {
         >
           <SecondaryMenu>
           <SelectBicycle>
-              <Button onClick={() => setActiveMenu('main')}><p><VscTriangleRight/></p></Button>
+              <Button onClick={() => setActiveMenu('main')}><p><VscTriangleLeft/></p></Button>
               {bicycleList.map(bike => {
                 return <Button 
                 onClick={async () => {
@@ -114,14 +114,14 @@ const MainMenu = styled.div`
   position: relative;
   width: 275pt;
   height: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
 `
 
 const SecondaryMenu = styled.div`
   position: relative;
   width:275pt;
   height: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: #dbdbdb;
   border-right: solid 1px black;
 `
@@ -135,14 +135,17 @@ const Button = styled(UnstyledButton)`
   border: solid 2px black;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
-    border: 3px solid black;
+    border: 1px solid black;
   }
 `
 
 const CollapseButton = styled(UnstyledButton)`
-  background-color: #ffa500;;
+  background-color: #ffa500;
   width: 12pt;
   height: 100%;
   display: flex;
