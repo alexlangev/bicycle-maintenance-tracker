@@ -13,14 +13,14 @@ const ViewToggle = (props) => {
   
   return (
     <ViewToggleWrapper>
-        <OptionWrapper>
-          <Button onClick={() => setViewToggle('list')}>
+        <OptionWrapper onClick={() => setViewToggle('list')}>
+          <Button >
             <AiOutlineUnorderedList size={32}/>
           </Button>
         </OptionWrapper>
 
-        <OptionWrapper style={{borderLeft: "2px solid black"}}>
-          <Button onClick={() => setViewToggle('image')}>
+        <OptionWrapper onClick={() => setViewToggle('image')} style={{borderLeft: "2px solid black"}}>
+          <Button >
             <FaBicycle size={32}/>
           </Button>
         </OptionWrapper>
@@ -36,7 +36,7 @@ const ViewToggleWrapper = styled.div`
   flex-direction: row;
 `
 
-const OptionWrapper = styled.div`
+const OptionWrapper = styled(UnstyledButton)`
   width: 50%;
   height: 100%;
   display: flex;
@@ -47,7 +47,8 @@ const OptionWrapper = styled.div`
   }
 `
 
-const Button = styled(UnstyledButton)`
+const Button = styled.div`
+  margin-top: 22pt;
   height:50pt;
 `
 
