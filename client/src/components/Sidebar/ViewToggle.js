@@ -43,7 +43,7 @@ const OptionWrapper = styled.div`
   justify-content: center;
   align-items: center;
   &:hover {
-    border: 2px solid black;
+    border: 2px solid #ffa500;;
   }
 `
 

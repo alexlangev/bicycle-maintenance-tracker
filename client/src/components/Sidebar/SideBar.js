@@ -103,7 +103,7 @@ const SidebarWrapper = styled.div`
 const SidebarMenu = styled.div`
   width: 263pt;
   height: 100%;
-  background-color: lightsalmon;
+  background-color: #dbdbdb;
   display: flex;
   flex-direction: column;
 `
@@ -139,13 +139,14 @@ const Button = styled(UnstyledButton)`
 `
 
 const CollapseButton = styled(UnstyledButton)`
-  background-color: lightpink;
+  background-color: #ffa500;;
   width: 12pt;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border:solid  0px 1px 0px 1px black;
 `
 
 export default Sidebar;

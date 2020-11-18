@@ -80,7 +80,6 @@ const Box = styled.div`
   align-items: center;
   flex-direction: column;
   padding-top: 35pt;
-
   color:#cccaca;
   text-shadow: 1px 1px 2px #000000;
 `
