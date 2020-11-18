@@ -158,7 +158,10 @@ function App() {
     )
   } else {
     return (
+      <>
+      <GlobalStyle />
       <LogInPage />
+      </>
     )
   }
 }

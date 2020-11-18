@@ -8,68 +8,96 @@ const LogInPage = () => {
 
   return (
     <PageWrapper>
-      <Title>Bicycle Maintenance Tracker</Title>
-      <SectionsWrapper>
-        <UserSection>
-          <h2>for athletes</h2>
-          
-          
-          <LogInButton>
-            <a href= {authPageUrl}>
-              Log In
-            </a>
-          </LogInButton>
-        </UserSection>
+      <LogInBox>
 
-        <MechanicSection>
-          <h2>for mechanics</h2>
-          <LogInButton>Log In</LogInButton>
-        </MechanicSection>
-      </SectionsWrapper>
+        <Title>{'Bicycle Maintenance App'}</Title>
+
+      <div>
+        <Box>
+          <Welcome>Please create a Strava account</Welcome>
+          <LogIn>
+            <LogInAnchor>Register</LogInAnchor>
+          </LogIn>
+        </Box>
+
+        <Box>
+          <Welcome>Already have an account?</Welcome>
+          <LogIn >
+            <LogInAnchor href= {authPageUrl}>Log In</LogInAnchor>
+          </LogIn>
+        </Box>
+      </div>
+
+      </LogInBox>    
     </PageWrapper>
   )
 }
 
 const PageWrapper = styled.div`
-  border: 1px black solid;
-  margin: auto;
+  margin: 0;
+  width:100%;
   height: 100vh;
-  width: 100%;
+  background-image: url('images/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 `
 
 const Title = styled.h1`
+  font-size: 30pt;
+  color:#cccaca;
+  text-shadow: 2px 2px 8px #000000;
 `
 
-const SectionsWrapper = styled.div`
-  border: 1px solid blue;
-  display: flex;
-  flex-direction: row;
-  height: 70vh;
-  width: 60%;
-`
-
-const UserSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 50%;
-  border-right: solid 5px black;
-`
-
-const MechanicSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 50%
-`
-
-const LogInButton = styled(UnstyledButton)`
+const LogIn = styled.div`
+  margin-top: 5pt;
+  font-size:20pt;
+  background-color: #cc5031;
+  color: inherit;
   border: 2px solid black;
+  border-radius:12pt;
+  padding:2pt 4pt;
 `
 
+const LogInAnchor = styled.a`
+  padding: 5pt;
+  text-decoration: none;
+  color: black;
+  &:visited{
+    color: black;
+  }
+`
+
+const Box = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 35pt;
+
+  color:#cccaca;
+  text-shadow: 1px 1px 4px #000000;
+`
+
+const LogInBox = styled.div`
+  width: 35%;
+  min-width: 600px;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10vh;
+  border-radius: 10px;
+  background-color: hsla(60,4%,18%, 0.85);
+  box-shadow: 8px 4px #32322e;
+`
+
+const Welcome = styled.p`
+  font-size:16pt;
+  font-weight: 500;
+`
 export default LogInPage;
