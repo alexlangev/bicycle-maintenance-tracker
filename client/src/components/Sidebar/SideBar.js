@@ -14,6 +14,7 @@ const Sidebar = () => {
   //subsribing to user context and creating an array of his bicycles
   const {currentUser} = React.useContext(CurrentUserContext);
   const bicycleList = Object.entries(currentUser.BikeData);
+  console.log('test2',bicycleList);
   const userId = currentUser.userInfo.athlete.id;
 
   const {setSelectedBicycle} = React.useContext(SelectedBicycleContext);
@@ -64,7 +65,6 @@ const Sidebar = () => {
                     //create bike?
                     setIsTracked(true);
                     setActiveMenu('main');
-///////////////////////// update tracked parts fetch???? and add them to setSelectedBicycle Context                    
                     setSelectedBicycle({
                       name:bike,
                       parts:'temp value'
