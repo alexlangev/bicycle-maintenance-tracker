@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+<h2>Bicycle Maintenance Tracker App</h2>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web application tracking the wear of different bicycle parts on the user's bicycle(s) using the Strava API. It is built with React, Redux, MongoDB and Node.js. It served as my final projet for Concordia's Full Stack Web Developpment Bootcamp (Nov 2020 graduation).
 
-## Available Scripts
+Project Status: The project is current in development. Specificaly, the fonctionnality of updating parts for different ones and the UI.
 
-In the project directory, you can run:
+<h2>Current features:</h2>
 
-### `yarn start`
+Log in through strava: </br>
+<img src="./public/images/logIn.gif" width="800"/>
+</br></br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Choose bicycle from the user's collection:</br>
+<img src="./public/images/bikeList.jpg" width="800" />
+</br></br>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+View parts navigation:</br>
+<img src="./public/images/Navigating.gif" width="800"/>
+</br></br>
 
-### `yarn test`
+Log Out through the app:</br>
+<img src="./public/images/logOut.gif" width="800"/>
+</br></br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+Reflection:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This was my first sizeble coding project I have ever done. Even though it is still unfinished, I consider it a resounding success. It turned out to be exactly what I set out to build.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Functionnalities currently implemented:
+Authentication through Auth0 with the user's Strava account.
+Let the user select a complete bicycle or build his own custom bicycle from a list of parts.
+Use a database for the bicycle parts, bicycles, user's and user's data.
+Render the bicycle's data as a list of parts or a bicycle diagram with color coded and clickable parts.
+This beautiful README file.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Unexpected obstacles:
+Some strava user data can be set private. The authentication need to be reflect that possibility.
+The Strava API ha a limited number of call per 15 minute window and per day.
+The amount of data fetched from Strava can be overwhelming.
+Tackling a project of this size with no plan of action leads to redoing certain sections as thing moves along. 
 
-### `yarn eject`
+Learning oppertunities: 
+Almost everything in this project was a first time for me. I had no clear plan of action which led me to do over certain sections of the project. For the next project, I will spend more time plannning. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Getting the authentication to work for any Strava account was hands down the hardest part of the project. I learned how to use Auth0 and environnement variables. It also forced me to read a lot of API documentation. Luckily Strava did a decent job making them novice friendly. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Building and styling the Front-End without a chosen theme or design was not the best course of action. It once again made me loose a lot of time rewriting a lot of code. For my next project I will use a tool like Figma or at the very least, choose a color theme.

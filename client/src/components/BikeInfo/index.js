@@ -34,7 +34,7 @@ const BikeInfo = (props) => {
   
   for(let i=0; i<= firstRideIndex; i++){
     //Added a factor of 3000 for showing purposes... need to update it
-    partm = partm + ((rides[i].distance)*3000);
+    partm = partm + ((rides[i].distance)*1200);
   }
   let obj = {part:part,partm:partm}
   wearArray.push(obj);
